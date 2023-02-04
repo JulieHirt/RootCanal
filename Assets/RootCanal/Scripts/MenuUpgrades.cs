@@ -34,8 +34,15 @@ namespace RootCanal
         private void Awake()
         {
             MoneyContext!.AmountChanged.AddListener(handleMoneyChange);
+            BtnBuy!.onClick.AddListener(BuySelectedUpgrade);
 
             _buttons = new UpgradeButton[Upgrades.Length];
+        }
+
+        public void BuySelectedUpgrade()
+        {
+            MoneyContext!.AddToAmount(-Upgrades[_selectedIndex].Cost);
+            SelectUpgradeButton(-1);
         }
 
         private void Start()
