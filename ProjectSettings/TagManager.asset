@@ -41,6 +41,9 @@ TagManager:
   - name: background
     uniqueID: 2661356487
     locked: 0
+  - name: wash
+    uniqueID: 1624057755
+    locked: 0
   - name: tiles
     uniqueID: 4068761567
     locked: 0
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: enemies
     uniqueID: 3405880775
+    locked: 0
+  - name: diageticUI
+    uniqueID: 1448579117
     locked: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e9c33bff828e504fb64d5f02cc30c31
+guid: 71d5daba5e27d3b4484b616e973d50cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiles_0
+      name: Bacteria_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25f804c0a962bf04085f05443b0756a8
-      internalID: 564705795
+      spriteID: da421b7dff8f7a145ab987b9951f9d36
+      internalID: 1515803654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_1
+      name: Bacteria_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfd6157bc6858f84faca9acb0fb277d1
-      internalID: -769506104
+      spriteID: 8a4c2eefb11598b4eaf3a86451059368
+      internalID: -488016624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_2
+      name: Bacteria_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e50767a5cc0713f4392aff59c1f6fc55
-      internalID: 1261477697
+      spriteID: 3bbbf584027df314b98188e2f2632181
+      internalID: 402225215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_3
+      name: Bacteria_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,92 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 183fc1551c67e304ab01b3c6d2ab608b
-      internalID: -799683709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiles_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 940f652c4b6d37d4da9cc764092315ea
-      internalID: -1005520720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiles_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56c841463d85ad64ea3aa19105972fcc
-      internalID: -1775416508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiles_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8dcb4c2d83d979d4c8580bf69fc33f53
-      internalID: 1949761061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiles_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99ed2857af396544cbaa47bb32cf2ac6
-      internalID: -610817056
+      spriteID: 96c450aec0c9c0f488fb08d7ee2cd2ac
+      internalID: 408307655
       vertices: []
       indices: 
       edges: []
@@ -295,14 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tiles_7: -610817056
-      tiles_5: -1775416508
-      tiles_1: -769506104
-      tiles_6: 1949761061
-      tiles_3: -799683709
-      tiles_4: -1005520720
-      tiles_0: 564705795
-      tiles_2: 1261477697
+      Bacteria_2: 402225215
+      Bacteria_0: 1515803654
+      Bacteria_1: -488016624
+      Bacteria_3: 408307655
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
