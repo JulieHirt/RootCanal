@@ -65,6 +65,11 @@ namespace RootCanal
         private void selectUpgradeButton(int buttonIndex)
         {
             _selectedIndex = buttonIndex;
+            for (int x = 0; x < Upgrades.Length; x++) {
+                UpgradeButton btn = _buttons![x];
+                btn.ImgSelected!.enabled = x == _selectedIndex;
+            }
+
             BtnBuy!.interactable = _selectedIndex >= 0;
 
             if (buttonIndex >= 0)
@@ -85,7 +90,7 @@ namespace RootCanal
 
                 bool canAfford = currAmt >= upgrade.Cost;
                 Debug.Log($"Can {(canAfford ? "" : "not")} afford upgrade {upgrade.Title} (cost {upgrade.Cost}) with money of {currAmt}");
-                btn.enabled = canAfford;
+                btn.Button!.interactable = canAfford;
                 btn.ImgDisabled!.enabled = !canAfford;
             }
         }

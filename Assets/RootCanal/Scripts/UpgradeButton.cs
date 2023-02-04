@@ -15,5 +15,6 @@ namespace RootCanal
         [Required] public TMP_Text? TxtCost;
         [Required] public Image? ImgThumbnail;
         [Required] public Image? ImgDisabled;
+        [Required] public Image? ImgSelected;
     }
 }
