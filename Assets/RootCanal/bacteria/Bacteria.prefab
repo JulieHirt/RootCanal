@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5557668926607481020}
   - component: {fileID: 6657094115938330966}
   m_Layer: 0
-  m_Name: Bacteria
+  m_Name: bacteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 962382747
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.11512991, g: 0.7924528, b: 0.14818165, a: 1}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7e6718adb8e8b43af45fb0db0d8606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 10
 --- !u!58 &-5557668926607481020
 CircleCollider2D:
   m_ObjectHideFlags: 0

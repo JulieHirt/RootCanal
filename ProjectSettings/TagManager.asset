@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 2661356487
+    locked: 0
+  - name: tiles
+    uniqueID: 4068761567
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: bacteria
+    uniqueID: 962382747
+    locked: 0
+  - name: enemies
+    uniqueID: 3405880775
     locked: 0
