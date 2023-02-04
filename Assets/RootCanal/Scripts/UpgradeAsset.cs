@@ -10,6 +10,6 @@ namespace RootCanal
     {
         [Required] public string Title;
         [Min(0)] public int Cost;
-        [Required] public Sprite Thumbnail;
+        [Required] public Sprite? Thumbnail;
     }
 }

@@ -182,6 +182,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28b2a54a299d31f4e84b21383ceff12a, type: 2}
   - {fileID: 11400000, guid: d2746a8b728b2d346a7b57a9378172e6, type: 2}
   - {fileID: 11400000, guid: ec4b30efe455dbe449d6296650578c23, type: 2}
+  BtnBuy: {fileID: 8076198703809225704}
 --- !u!1 &2717654746600075407
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +505,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cab75cd56c0cbb4f9e3e138ca8a1204, type: 3}
+--- !u!114 &8076198703809225704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2463366798949572909, guid: 3cab75cd56c0cbb4f9e3e138ca8a1204, type: 3}
+  m_PrefabInstance: {fileID: 5925550612671726277}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8076198703809225707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2463366798949572910, guid: 3cab75cd56c0cbb4f9e3e138ca8a1204, type: 3}
