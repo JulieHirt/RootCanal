@@ -56,3 +56,6 @@ TagManager:
   - name: enemies
     uniqueID: 3405880775
     locked: 0
+  - name: diageticUI
+    uniqueID: 1448579117
+    locked: 0
