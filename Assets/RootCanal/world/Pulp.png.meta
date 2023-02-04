@@ -117,7 +117,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pulp_0
+      name: pulp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb8f52ba517dd245bd6cc86d06c11f6
+      internalID: -940822768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a8d25ce8b04ad4b9276577f406f782
+      internalID: -1575891327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca18fcbb5a75b94c8e9de4ed20e9552
+      internalID: 131105097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074a06f2c5d3b774ea5372d7b15a1509
+      internalID: -740884943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a534cbb6c67fe49b3b6b466f0fe809
+      internalID: 442380035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ce6c7bb45b7a84db6c37d6384be3db
+      internalID: 1251476611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_6
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deaf58d41482fa94d8bb152c24981df2
-      internalID: 1027655331
+      spriteID: 39f2dcd4c67eb3d41828c923870c6788
+      internalID: 2078157630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pulp_1
+      name: pulp_7
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +278,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76402fc08d1b08e4ca426668df09b72b
-      internalID: -1637245614
+      spriteID: 11bc13c38fcdbd54b904a80e036992f3
+      internalID: 453442306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pulp_2
+      name: pulp_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed678f07bb764ac45abafdb992db15cb
+      internalID: 1854890469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_9
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15fbda36aa3b62241936e959ebef395e
-      internalID: -2002314324
+      spriteID: d09981a8739f5314687551e283ab573c
+      internalID: -710246600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pulp_3
+      name: pulp_10
       rect:
         serializedVersion: 2
         x: 32
@@ -194,8 +341,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9a30ba6b5ba27c4d9a7be35e5769e8f
-      internalID: -126438325
+      spriteID: 078bca5379288544c8cce510d29574d1
+      internalID: 1157154598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc65f2070b10d324789f72d907dff3a0
+      internalID: 960190442
       vertices: []
       indices: 
       edges: []
@@ -211,10 +379,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pulp_1: -1637245614
-      Pulp_2: -2002314324
-      Pulp_3: -126438325
-      Pulp_0: 1027655331
+      pulp_4: 442380035
+      pulp_6: 2078157630
+      pulp_9: -710246600
+      pulp_1: -1575891327
+      pulp_2: 131105097
+      pulp_11: 960190442
+      pulp_5: 1251476611
+      pulp_7: 453442306
+      pulp_8: 1854890469
+      pulp_0: -940822768
+      pulp_10: 1157154598
+      pulp_3: -740884943
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
