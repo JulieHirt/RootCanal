@@ -10,11 +10,12 @@ namespace RootCanal
         public float Speed = 10f;
         Vector2 lastClickedPos;
         bool moving;
+        bool selected;//detects if the player has selected the bacteria to give commands to it
 
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && selected == true)
             {
                 lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 moving = true;
@@ -32,5 +33,10 @@ namespace RootCanal
             }
         
         }
+    void OnMouseDown()//detect if the player has clicked on the bacteria to select it
+    {//toggle if the bacteria is selected
+        selected = !selected;
+    }
     }
 }
+
