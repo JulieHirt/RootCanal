@@ -6,6 +6,7 @@ namespace RootCanal
 {
     public class Bacteria : MonoBehaviour
     {
+        Transform selectionSprite;
         SpriteRenderer m_SpriteRenderer;
         //TODO: give player the ability to upgrade this
         public float Speed = 10f;
@@ -17,6 +18,9 @@ namespace RootCanal
     {
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        //gets the selection sprite. assumes it is the first child.
+        selectionSprite = this.gameObject.transform.GetChild(0);
+        selectionSprite.gameObject.SetActive(false); //bacteria appearance is "unselected" at start
 
     }
 
@@ -46,10 +50,10 @@ namespace RootCanal
         selected = !selected;
         if(selected)
         {
-            m_SpriteRenderer.color = Color.yellow;
+            selectionSprite.gameObject.SetActive(true);
         }
         else{
-            m_SpriteRenderer.color = Color.white;
+            selectionSprite.gameObject.SetActive(false);
         }
     }
     }
