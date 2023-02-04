@@ -389,5 +389,7 @@ MonoBehaviour:
     customWindowSize: {x: 500, y: 300}
     alignWindowToBar: 1
     windowMode: 0
-  _sceneHistory: []
+  _sceneHistory:
+  - name: julietest
+    path: Assets/RootCanal/Scenes/julietest.unity
   _notes: []
