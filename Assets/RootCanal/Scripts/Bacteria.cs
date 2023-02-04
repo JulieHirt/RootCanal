@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RootCanal
 {
@@ -14,7 +15,7 @@ namespace RootCanal
         Vector2 prevPos; //keep track of position in prev frame to determine if moving left or right
         bool moving;
         bool selected;//detects if the player has selected the bacteria to give commands to it
-
+        public UnityEvent<Vector3Int> DestinationReached = new UnityEvent<Vector3Int>();
         void Start()
     {
         //Fetch the SpriteRenderer from the GameObject
@@ -53,6 +54,9 @@ namespace RootCanal
             {
                 {
                     moving = false;
+                    //raise an event
+                    //todo:fix this so the position is where you sent it
+                    DestinationReached.Invoke( new Vector3Int(0,0,0));
                 }
             }
             prevPos = transform.position; //set the prevPos for the next update cycle
