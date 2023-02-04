@@ -7,26 +7,19 @@ namespace RootCanal
 {
     public class TileSelector : MonoBehaviour
     {
-        Tilemap tm;
-        // Start is called before the first frame update
-        void Start()
-        {
-        tm = GetComponent<Tilemap>();//get a reference to the tilemap
-        }
+        public Tilemap tm;//set this in the inspector. References the tilemap from the world prefab.
 
         // Update is called once per frame
         void Update()
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Debug.Log(string.Format("Co-ords of mouse is [X: {0} Y: {0}]", mousePos.x, mousePos.y));
-            /*TileData tile = world.Tile((int)pos.x, (int)pos.y);
- 
-            if (tile != null)
-            {
-                Debug.Log(string.Format("Tile is: {0}", tile.TileType));
-            }*/
             Vector3Int coordinate = tm.WorldToCell(mousePos);
             Debug.Log(coordinate);
+            if (tm.HasTile(coordinate))
+            {
+                Debug.Log("there is a tile here!");
+            }
 
         }
     }
