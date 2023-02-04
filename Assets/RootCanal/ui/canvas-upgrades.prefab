@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 1869850573081624113}
   - component: {fileID: 1869850573081624112}
   - component: {fileID: 3943761910835560474}
+  - component: {fileID: 160912494218763553}
   m_Layer: 5
   m_Name: canvas-upgrades
   m_TagString: Untagged
@@ -183,6 +184,35 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d2746a8b728b2d346a7b57a9378172e6, type: 2}
   - {fileID: 11400000, guid: ec4b30efe455dbe449d6296650578c23, type: 2}
   BtnBuy: {fileID: 8076198703809225704}
+--- !u!114 &160912494218763553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869850573081624114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3943761910835560474}
+          m_TargetAssemblyTypeName: RootCanal.MenuUpgrades, Assembly-CSharp
+          m_MethodName: SelectUpgradeButton
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: -1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2717654746600075407
 GameObject:
   m_ObjectHideFlags: 0

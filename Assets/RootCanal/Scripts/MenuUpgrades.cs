@@ -49,7 +49,7 @@ namespace RootCanal
                 _buttons![x] = btn;
 
                 int index = x;  // Ensure correct index is saved in Lambda during loop
-                btn.Button!.onClick.AddListener(() => selectUpgradeButton(index));
+                btn.Button!.onClick.AddListener(() => SelectUpgradeButton(index));
 
                 Vector2 btnPos = btn.Root!.anchoredPosition;
                 btn.Root.anchoredPosition = new Vector2(btnPos.x, x * -UpgradeButtonHeight);
@@ -59,10 +59,10 @@ namespace RootCanal
             }
 
             handleMoneyChange(delta: 0);
-            selectUpgradeButton(buttonIndex: -1);
+            SelectUpgradeButton(buttonIndex: -1);
         }
 
-        private void selectUpgradeButton(int buttonIndex)
+        public void SelectUpgradeButton(int buttonIndex)
         {
             _selectedIndex = buttonIndex;
             for (int x = 0; x < Upgrades.Length; x++) {
