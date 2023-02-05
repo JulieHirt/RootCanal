@@ -5,30 +5,38 @@ using UnityEngine.Events;
 
 namespace RootCanal
 {
-    public class BacteriaManager : MonoBehaviour, IEnumerable<Bacteria>
+    public class BacteriaManager : MonoBehaviour, IEnumerable<Bacterium>
     {
-        private readonly List<Bacteria> _bacteria = new();
+        private readonly List<Bacterium> _bacteria = new();
 
-        public UnityEvent<Bacteria> BacteriumSpawned = new();
-        public UnityEvent<Bacteria> BacteriumKilled = new();
+        public UnityEvent<Bacterium> BacteriumAdded = new();
+        public UnityEvent<Bacterium> BacteriumKilled = new();
 
-        public void DivideBacterium(Bacteria bacteria)
+        public void AddExistingBacterium(Bacterium bacterium)
         {
-            _bacteria.Add(bacteria);
-            GameObject newBacteriaObj = Instantiate(bacteria.gameObject, getDividedSpawnPosition(bacteria.transform.position), Quaternion.identity, bacteria.transform.parent);
-            Bacteria newBacteria = newBacteriaObj.GetComponent<Bacteria>();
-
-            BacteriumSpawned.Invoke(newBacteria);
+            _bacteria.Add(bacterium);
+            Debug.Log($"Existing bacterium {bacterium.name} added to manager");
+            BacteriumAdded.Invoke(bacterium);
         }
 
-        public IEnumerator<Bacteria> GetEnumerator() => throw new System.NotImplementedException();
-
-        public void KillBacterium(Bacteria bacteria)
+        public void DivideBacterium(Bacterium bacterium)
         {
-            _bacteria.Remove(bacteria);
-            BacteriumKilled.Invoke(bacteria);
+            GameObject newBacteriumObj = Instantiate(bacterium.gameObject, getDividedSpawnPosition(bacterium.transform.position), Quaternion.identity, bacterium.transform.parent);
+            Bacterium newBacterium = newBacteriumObj.GetComponent<Bacterium>();
+            _bacteria.Add(newBacterium);
+            Debug.Log($"Bacterium {bacterium.name} divided to yield bacterium {newBacterium.name} (which was added to manager)");
+            BacteriumAdded.Invoke(newBacterium);
+        }
 
-            Destroy(bacteria.gameObject);
+        public IEnumerator<Bacterium> GetEnumerator() => throw new System.NotImplementedException();
+
+        public void KillBacterium(Bacterium bacterium)
+        {
+            _bacteria.Remove(bacterium);
+            Debug.Log($"Killing bacterium {bacterium.name} and removing it from manager...");
+            BacteriumKilled.Invoke(bacterium);
+
+            Destroy(bacterium.gameObject);
         }
 
         private Vector3 getDividedSpawnPosition(Vector3 originalPosition)

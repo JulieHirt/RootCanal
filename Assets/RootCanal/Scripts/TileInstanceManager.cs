@@ -19,24 +19,24 @@ namespace RootCanal
         [AssetsOnly] public GameObject? TileInstancePrefab;
 
         public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceCreated;
+        public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceDestroyed;
 
-        private void Awake()
-        {
-            BacteriaManager!.BacteriumSpawned.AddListener(bacteria =>
-                bacteria.DestinationReached.AddListener(onDestinationReached)
+        private void Awake() =>
+            BacteriaManager!.BacteriumAdded.AddListener(bacterium =>
+                bacterium.DestinationReached.AddListener(onDestinationReached)
             );
-        }
 
         private void onDestinationReached(Vector3Int position)
         {
             if (_tiles.TryGetValue(position, out TileInstance tile))
                 return;
 
+            Debug.Log($"Instantiating tile instance at position {position}...");
             TileBase tileBase = Tilemap!.GetTile(position);
             GameObject tileObj = Instantiate(TileInstancePrefab, Tilemap.CellToWorld(position), Quaternion.identity, TileParent != null ? TileParent : transform)!;
             tile = tileObj.GetComponent<TileInstance>();
             if (tile == null)
-                throw new System.Exception($"{nameof(TileInstancePrefab)} must have a {nameof(TileInstance)} component somewhere in its hierarchy");
+                throw new Exception($"{nameof(TileInstancePrefab)} must have a {nameof(TileInstance)} component somewhere in its hierarchy");
 
             _tiles[position] = tile;
 
@@ -45,11 +45,15 @@ namespace RootCanal
 
         public void BreakTileAt(Vector3Int position)
         {
-            if (!_tiles.TryGetValue(position, out TileInstance tile))
+            if (!_tiles.TryGetValue(position, out TileInstance tile)) {
+                Debug.LogWarning($"No tile instance to break at position {position}...");
                 return;
+            }
 
+            Debug.Log($"Breaking tile instance at position {position}...");
             _tiles.Remove(position);
             Destroy(tile);
+            TileInstanceDestroyed?.Invoke(this, (tile, position));
         }
 
         public TileInstance? GetTileAtPosition(Vector3Int position) =>
