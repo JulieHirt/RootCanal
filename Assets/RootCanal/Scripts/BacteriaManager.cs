@@ -15,7 +15,7 @@ namespace RootCanal
         public void DivideBacterium(Bacteria bacteria)
         {
             _bacteria.Add(bacteria);
-            GameObject newBacteriaObj = Instantiate(bacteria.gameObject, bacteria.transform.parent);   // TODO: spawn where?
+            GameObject newBacteriaObj = Instantiate(bacteria.gameObject, getDividedSpawnPosition(bacteria.transform.position), Quaternion.identity, bacteria.transform.parent);
             Bacteria newBacteria = newBacteriaObj.GetComponent<Bacteria>();
 
             BacteriumSpawned.Invoke(newBacteria);
@@ -29,6 +29,11 @@ namespace RootCanal
             BacteriumKilled.Invoke(bacteria);
 
             Destroy(bacteria.gameObject);
+        }
+
+        private Vector3 getDividedSpawnPosition(Vector3 originalPosition)
+        {
+            return originalPosition;
         }
 
         IEnumerator IEnumerable.GetEnumerator() => _bacteria.GetEnumerator();
