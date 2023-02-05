@@ -1,27 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace RootCanal
 {
     public class TileSelector : MonoBehaviour
     {
-        public Tilemap tm;//set this in the inspector. References the tilemap from the world prefab.
+        [Required] public Tilemap? Tilemap;
+        public bool Logging = false;
+        public UnityEvent<Vector3Int> TileSelected = new();
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log(string.Format("Co-ords of mouse is [X: {0} Y: {0}]", mousePos.x, mousePos.y));
-            Vector3Int coordinate = tm.WorldToCell(mousePos);
-            Debug.Log(coordinate);
-            transform.position = coordinate;
-            Debug.Log(transform.position);
-            if (tm.HasTile(coordinate))
-            {
-                Debug.Log("there is a tile here!");
-                
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Logging)
+                Debug.Log($"World coordinates of mouse are [X: {mouseWorldPos.x} Y: {mouseWorldPos.y}]");
+            Vector3Int mouseCell = Tilemap.WorldToCell(mouseWorldPos);
+            if (Logging)
+                Debug.Log($"Cell coordinates of mouse are [X: {mouseCell.x} Y: {mouseCell.y}]");
+
+            transform.position = mouseCell;
+
+            if (Tilemap.HasTile(mouseCell)) {
+                if (Logging)
+                    Debug.Log("There is a tile here!");
+
+                TileSelected.Invoke(mouseCell);
             }
 
         }

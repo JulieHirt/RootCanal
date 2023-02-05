@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace RootCanal
 {
-    public class MoneyContext : MonoBehaviour
+    public class QuantityContext : MonoBehaviour
     {
         [field: ShowInInspector, SerializeField]
         public int CurrentAmount { get; private set; }

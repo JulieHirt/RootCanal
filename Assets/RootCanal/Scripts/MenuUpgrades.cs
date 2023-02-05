@@ -14,7 +14,7 @@ namespace RootCanal
         private UpgradeButton[]? _buttons;
         private int _selectedIndex = -1;
 
-        [Required] public MoneyContext? MoneyContext;
+        [Required] public QuantityContext? MoneyContext;
 
         [Header("Money text")]
         [Required] public TMP_Text? TxtAmount;
