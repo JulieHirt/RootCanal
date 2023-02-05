@@ -22,6 +22,7 @@ namespace RootCanal
                 Debug.Log($"Cell coordinates of mouse are [X: {mouseCell.x} Y: {mouseCell.y}]");
 
             transform.position = mouseCell;
+            transform.position += new Vector3(0.5f, 0.5f, 0);
 
             if (Tilemap.HasTile(mouseCell)) {
                 if (Logging)
