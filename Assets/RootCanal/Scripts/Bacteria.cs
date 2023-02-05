@@ -7,18 +7,19 @@ namespace RootCanal
     public class Bacteria : MonoBehaviour
     {
         public Tilemap tm;//set this in the inspector. References the tilemap from the world prefab.
-        Transform selectionSprite;
-        SpriteRenderer m_SpriteRenderer;
+        private Transform selectionSprite;
+        private SpriteRenderer m_SpriteRenderer;
 
         //TODO: give player the ability to upgrade this
         public float Speed = 10f;
-        Vector2 lastClickedPos;
-        Vector2 prevPos; //keep track of position in prev frame to determine if moving left or right
+        private Vector2 lastClickedPos;
+        private Vector2 prevPos; //keep track of position in prev frame to determine if moving left or right
         public Vector3Int goalTilePos;
-        bool moving;
-        bool selected;//detects if the player has selected the bacteria to give commands to it
+        private bool moving;
+        private bool selected;//detects if the player has selected the bacteria to give commands to it
         public UnityEvent<Vector3Int> DestinationReached = new UnityEvent<Vector3Int>();
-        void Start()
+
+        private void Start()
         {
             //Fetch the SpriteRenderer from the GameObject
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -30,7 +31,7 @@ namespace RootCanal
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonDown(0) && selected == true) {
                 lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -62,15 +63,10 @@ namespace RootCanal
             prevPos = transform.position; //set the prevPos for the next update cycle
 
         }
-        void OnMouseDown()//detect if the player has clicked on the bacteria to select it
+        private void OnMouseDown()//detect if the player has clicked on the bacteria to select it
         {//toggle if the bacteria is selected
             selected = !selected;
-            if (selected) {
-                selectionSprite.gameObject.SetActive(true);
-            }
-            else {
-                selectionSprite.gameObject.SetActive(false);
-            }
+            selectionSprite.gameObject.SetActive(selected);
         }
     }
 }
