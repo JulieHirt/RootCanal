@@ -6,7 +6,8 @@ namespace RootCanal
 {
     public class Bacteria : MonoBehaviour
     {
-        public Tilemap tm;//set this in the inspector. References the tilemap from the world prefab.
+        public bool Logging = false;
+        public Tilemap Tilemap;//set this in the inspector. References the tilemap from the world prefab.
         private Transform selectionSprite;
         private SpriteRenderer m_SpriteRenderer;
 
@@ -29,8 +30,49 @@ namespace RootCanal
             prevPos = (Vector2)this.transform.position;
 
         }
+        private Vector3Int getCurrentTilePos()
+        {
+            //use the tilemap and current position to determine the cordinates of the tile we are in.
+            return Tilemap.WorldToCell(transform.position);
+        }
+        private bool isAtLeastOneAdjacentTileMineable()
+        {
+            //get all the adjacent cells
+            //check each cell to see if it has a "tile" in it (tile = minable piece of tooth)
+            Vector3Int pos = getCurrentTilePos();
+            Vector3Int diagonalTopLeft = new Vector3Int(pos.x-1, pos.y-1, pos.z);
+            Vector3Int top = new Vector3Int(pos.x, pos.y+1, pos.z);
+            Vector3Int diagonalTopRight = new Vector3Int(pos.x+1, pos.y+1, pos.z);
+            Vector3Int left = new Vector3Int(pos.x-1, pos.y, pos.z);
+            Vector3Int right = new Vector3Int(pos.x+1, pos.y, pos.z);
+            Vector3Int diagonalBottomLeft = new Vector3Int(pos.x-1, pos.y-1, pos.z);
+            Vector3Int bottom = new Vector3Int(pos.x, pos.y-1, pos.z);
+            Vector3Int diagonalBottomRight = new Vector3Int(pos.x+1, pos.y-1, pos.z);
+
+            if(Tilemap.HasTile(diagonalTopLeft) || Tilemap.HasTile(top) || Tilemap.HasTile(diagonalTopRight) || Tilemap.HasTile(left) || Tilemap.HasTile(right) || Tilemap.HasTile(diagonalBottomLeft) || Tilemap.HasTile(bottom) || Tilemap.HasTile(diagonalBottomRight))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }   
+
+        }
 
         // Update is called once per frame
+
+        private void reachedDestination() //stop moving and raise event
+        {
+            moving = false;
+            //move to center of cell
+            Vector3Int cellPosition = Tilemap.LocalToCell(transform.localPosition);
+        transform.localPosition = Tilemap.GetCellCenterLocal(cellPosition);
+            //raise an event
+            if (Logging)
+            Debug.Log("reached destination" + goalTilePos);
+            DestinationReached.Invoke(goalTilePos);
+        }
         private void Update()
         {
             //detect if the player has clicked on the bacteria to select it
@@ -38,7 +80,7 @@ namespace RootCanal
             if (isPlayerSelecting) {
                 if (_isSelected) {
                     lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    goalTilePos = tm.WorldToCell(lastClickedPos);
+                    goalTilePos = Tilemap.WorldToCell(lastClickedPos);
                     moving = true;
                 }
                 else {
@@ -60,15 +102,13 @@ namespace RootCanal
                     m_SpriteRenderer.flipX = true;
                 }
                 //to do: hey am I next to a tile? stop. (yes, even if I have not reached my destination!!)
+                if(isAtLeastOneAdjacentTileMineable())
+                {
+                    reachedDestination();
+                }
             }
             else {
-                {
-                    moving = false;
-                    //raise an event
-                    //todo:fix this so the position is where you sent it
-                    //Debug.Log("reached destination" + goalTilePos);
-                    DestinationReached.Invoke(goalTilePos);
-                }
+                reachedDestination();
             }
             prevPos = transform.position; //set the prevPos for the next update cycle
 
