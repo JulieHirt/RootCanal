@@ -69,6 +69,7 @@ namespace RootCanal
                 {
                     m_SpriteRenderer.flipX = true;
                 }
+                //to do: hey am I next to a tile? stop. (yes, even if I have not reached my destination!!)
             }
             else
             {
