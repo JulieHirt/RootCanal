@@ -17,11 +17,17 @@ namespace RootCanal
 
         public UnityEvent<int> AmountChanged = new();
 
+        public UnityEvent ReachedMinAmount = new();
+
         [Button]
         public void AddToAmount(int delta)
         {
             CurrentAmount = Math.Clamp(CurrentAmount + delta, MinAmount, MaxAmount);
             AmountChanged.Invoke(delta);
+            if(CurrentAmount == MinAmount)
+            {
+                ReachedMinAmount.Invoke();
+            }
         }
     }
 }
