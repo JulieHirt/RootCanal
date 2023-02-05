@@ -2131,22 +2131,6 @@ PrefabInstance:
       propertyPath: MoneyContext
       value: 
       objectReference: {fileID: 1734161840}
-    - target: {fileID: 8076198703809225705, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076198703809225705, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1b446c4e0afa2054497b5ae4216edaf3, type: 3}
-    - target: {fileID: 8076198703809225705, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
-      propertyPath: m_UseSpriteMesh
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076198703809225705, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
 --- !u!1001 &7061033550011858938
