@@ -12,6 +12,8 @@ namespace RootCanal
         [Required] public Tilemap? Tilemap;
         public bool Logging = false;
         public UnityEvent<Vector3Int> TileSelected = new();
+        public Sprite PickAxeIcon;
+        public Sprite NonPickAxeIcon;
 
         // Update is called once per frame
         private void Update()
@@ -30,6 +32,10 @@ namespace RootCanal
                     Debug.Log("There is a tile here!");
 
                 TileSelected.Invoke(mouseCell);
+                this.GetComponent<SpriteRenderer>().sprite = PickAxeIcon;
+            }
+            else {
+                this.GetComponent<SpriteRenderer>().sprite = NonPickAxeIcon;
             }
 
         }
