@@ -11,14 +11,17 @@ namespace RootCanal
 
         private void Awake()
         {
+            Debug.Log("added lister");
             BacteriaManager!.BacteriumAdded.AddListener(bacterium => {
-                bacterium.GetComponent<QuantityContext>().ReachedMinAmount.AddListener(() => die(bacterium));
+                Debug.Log("reall setgin t up thelister");
+                bacterium.HealthContext!.ReachedMinAmount.AddListener(() => die(bacterium));
             });
 
         }
 
         private void die(Bacterium b)
         {
+            Debug.Log("bacteria died");
             BacteriaManager!.KillBacterium(b);
             //play a sound or something?
         }

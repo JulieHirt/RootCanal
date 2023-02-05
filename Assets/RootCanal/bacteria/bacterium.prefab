@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 3099604717935794849}
   MiningTimer: {fileID: 7432831917540722728}
+  HealthContext: {fileID: 4053584820659432001}
   LineRenderer: {fileID: 6728168871342466015}
   Selected:
     m_PersistentCalls:
@@ -470,6 +471,9 @@ MonoBehaviour:
   MaxAmount: 10
   MinAmount: 0
   AmountChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  ReachedMinAmount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4629828851398571462

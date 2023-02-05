@@ -29,7 +29,7 @@ namespace RootCanal
         {
             Debug.Log("GameObject1 collided with " + col.name);
             QuantityContext qc = col.GetComponent<QuantityContext>();
-            qc.AddToAmount(-2);
+            qc.AddToAmount(-10);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace RootCanal
     {
         [Required] public SpriteRenderer? SpriteRenderer;
         [Required] public Timer? MiningTimer;
+        [Required] public QuantityContext? HealthContext;
         public LineRenderer? LineRenderer;
         public UnityEvent Selected = new();
         public UnityEvent Deselected = new();

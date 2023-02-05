@@ -24,8 +24,10 @@ namespace RootCanal
         {
             CurrentAmount = Math.Clamp(CurrentAmount + delta, MinAmount, MaxAmount);
             AmountChanged.Invoke(delta);
-            if(CurrentAmount == MinAmount)
+            Debug.Log("quantty context called");
+            if(CurrentAmount <= MinAmount)
             {
+                Debug.Log("reaced min amount in quantity context");
                 ReachedMinAmount.Invoke();
             }
         }
