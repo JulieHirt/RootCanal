@@ -433,6 +433,17 @@ MonoBehaviour:
   MaxScreenOffsetToMoveX: 250
   MinScreenOffsetToMoveY: 100
   MaxScreenOffsetToMoveY: 100
+--- !u!114 &535287349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
+  m_PrefabInstance: {fileID: 1872089533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7e6718adb8e8b43af45fb0db0d8606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &535287351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3099604717935794848, guid: 991da447528977e478823ceb6306c91f, type: 3}
@@ -933,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642053093}
+  - component: {fileID: 1642053094}
   m_Layer: 0
   m_Name: bacteria
   m_TagString: Untagged
@@ -958,6 +970,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1642053094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642053092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a424f5a5b0c4e824f80b4866bbc96a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AwakeTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 593280905}
+        m_TargetAssemblyTypeName: RootCanal.BacteriaManager, Assembly-CSharp
+        m_MethodName: AddExistingBacterium
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 535287349}
+          m_ObjectArgumentAssemblyTypeName: RootCanal.Bacterium, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 593280905}
+        m_TargetAssemblyTypeName: RootCanal.BacteriaManager, Assembly-CSharp
+        m_MethodName: AddExistingBacterium
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2104005533}
+          m_ObjectArgumentAssemblyTypeName: RootCanal.Bacterium, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 593280905}
+        m_TargetAssemblyTypeName: RootCanal.BacteriaManager, Assembly-CSharp
+        m_MethodName: AddExistingBacterium
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1795779226}
+          m_ObjectArgumentAssemblyTypeName: RootCanal.Bacterium, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StartTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnableTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisableTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDestroyTriggered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1676867368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1131,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795779226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
+  m_PrefabInstance: {fileID: 1383012132}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7e6718adb8e8b43af45fb0db0d8606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1872089533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1156,6 +1242,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3099604717935794848, guid: 991da447528977e478823ceb6306c91f, type: 3}
   m_PrefabInstance: {fileID: 2104005528}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2104005533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
+  m_PrefabInstance: {fileID: 2104005528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7e6718adb8e8b43af45fb0db0d8606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2142850817
 GameObject:
   m_ObjectHideFlags: 0

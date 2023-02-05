@@ -12,6 +12,12 @@ namespace RootCanal
         public UnityEvent<Bacterium> BacteriumAdded = new();
         public UnityEvent<Bacterium> BacteriumKilled = new();
 
+        public void AddExistingBacterium(Bacterium bacterium)
+        {
+            _bacteria.Add(bacterium);
+            BacteriumAdded.Invoke(bacterium);
+        }
+
         public void DivideBacterium(Bacterium bacterium)
         {
             GameObject newBacteriumObj = Instantiate(bacterium.gameObject, getDividedSpawnPosition(bacterium.transform.position), Quaternion.identity, bacterium.transform.parent);
