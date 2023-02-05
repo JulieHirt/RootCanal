@@ -8,7 +8,7 @@ namespace RootCanal
     public class RtsCameraController : MonoBehaviour
     {
         [Required] public Camera? Camera;
-        [Min(0)] public float CameraSpeed = 5f;
+        [Min(0)] public float CameraSpeed = 1f;
         public bool Logging = false;
 
         [Header("Camera world bounds")]
