@@ -27,18 +27,18 @@ namespace RootCanal
 
         private void onActioningTile((Bacterium bacterium, Vector3Int position) e)
         {
-            if (_tiles.TryGetValue(e.position, out TileInstance tile))
+            if (_tiles.TryGetValue(e.position, out TileInstance tileInstance))
                 return;
 
             Debug.Log($"Instantiating tile instance at position {e.position}...");
             GameObject tileObj = Instantiate(TileInstancePrefab, Tilemap!.CellToWorld(e.position), Quaternion.identity, TileParent != null ? TileParent : transform)!;
-            tile = tileObj.GetComponent<TileInstance>();
-            if (tile == null)
+            tileInstance = tileObj.GetComponent<TileInstance>();
+            if (tileInstance == null)
                 throw new Exception($"{nameof(TileInstancePrefab)} must have a {nameof(TileInstance)} component somewhere in its hierarchy");
 
-            _tiles[e.position] = tile;
+            _tiles[e.position] = tileInstance;
 
-            TileInstanceCreated?.Invoke(this, (tile, e.position));
+            TileInstanceCreated?.Invoke(this, (tileInstance, e.position));
         }
 
         public void BreakTileAt(Vector3Int position)

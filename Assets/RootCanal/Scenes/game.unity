@@ -385,16 +385,64 @@ MonoBehaviour:
   BacteriaManager: {fileID: 593280905}
   BacteriaMovementManager: {fileID: 44560307}
   MoneyContext: {fileID: 1734161840}
-  DamagePerHit: 10
-  DamageTiles:
-  - {fileID: 11400000, guid: 77b9a1b1ab485fc4a820743f301d5696, type: 2}
-  - {fileID: 11400000, guid: 5a9104880e4528f4a81728225258fea0, type: 2}
-  - {fileID: 11400000, guid: 4086f38425ee13345b7bcfa16ff3bd29, type: 2}
-  - {fileID: 11400000, guid: f07534dbb7e39144f81c8858fa908cbe, type: 2}
-  - {fileID: 11400000, guid: 2655b5ebaf7e3b64c84f08b47921a299, type: 2}
-  - {fileID: 11400000, guid: fb65f99dc427e0448acf5c74ba9e5eb5, type: 2}
-  - {fileID: 11400000, guid: 8d3a514a82eec8f4b8ca2ed2674d7b01, type: 2}
-  - {fileID: 11400000, guid: b740e27fce0d2944a868f0811c6cd5dd, type: 2}
+  ToothTissueConfigs:
+  - Name: enamel
+    MaxDurability: 70
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: 77b9a1b1ab485fc4a820743f301d5696, type: 2}
+    - {fileID: 11400000, guid: 5a9104880e4528f4a81728225258fea0, type: 2}
+    - {fileID: 11400000, guid: 4086f38425ee13345b7bcfa16ff3bd29, type: 2}
+    - {fileID: 11400000, guid: f07534dbb7e39144f81c8858fa908cbe, type: 2}
+    - {fileID: 11400000, guid: 2655b5ebaf7e3b64c84f08b47921a299, type: 2}
+    - {fileID: 11400000, guid: fb65f99dc427e0448acf5c74ba9e5eb5, type: 2}
+    - {fileID: 11400000, guid: 8d3a514a82eec8f4b8ca2ed2674d7b01, type: 2}
+    - {fileID: 11400000, guid: b740e27fce0d2944a868f0811c6cd5dd, type: 2}
+  - Name: dentin
+    MaxDurability: 60
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: bcb9c49b721b60347a248294ccd18db0, type: 2}
+    - {fileID: 11400000, guid: f0d835a6fd715a54a98129b9aadd795c, type: 2}
+    - {fileID: 11400000, guid: 1c5341b4e7bbf874fa97194b9fe2d354, type: 2}
+    - {fileID: 11400000, guid: f3e299c6a6d793043be2a57f223f128e, type: 2}
+    - {fileID: 11400000, guid: 99cbf2b6a6078cd43b78d0980639d856, type: 2}
+    - {fileID: 11400000, guid: 683c94e105db4914fb747f31b6987950, type: 2}
+    - {fileID: 11400000, guid: 489661cfa561e8242b1418f31f969f22, type: 2}
+  - Name: pulp0
+    MaxDurability: 30
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: da0dd18cb0ee18f4abeb836e1f2ca63e, type: 2}
+    - {fileID: 11400000, guid: af8d770012b6b8b48bb027fc2543ee1a, type: 2}
+    - {fileID: 11400000, guid: 2d25ccf471717f24b9716503355419a8, type: 2}
+  - Name: pulp1
+    MaxDurability: 30
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: bd3ed0df9a00bd140afe96ced3e64c94, type: 2}
+    - {fileID: 11400000, guid: 3f309311d4fafbc438b5300e1d05c744, type: 2}
+    - {fileID: 11400000, guid: f4ddd70492e07c84285deeadeb062174, type: 2}
+  - Name: pulp2
+    MaxDurability: 30
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: d9bdb855a1e193745808e56b337a37a2, type: 2}
+    - {fileID: 11400000, guid: a8f21df9f10ca7c40b459eaca0e0636e, type: 2}
+    - {fileID: 11400000, guid: 83365c5998a15294b9ad96c246820026, type: 2}
+  - Name: pulp3
+    MaxDurability: 30
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: 3f575517016792c4fb03fff373d7b818, type: 2}
+    - {fileID: 11400000, guid: 457f412e0bc6b14469689cd4ac900ab0, type: 2}
+    - {fileID: 11400000, guid: d32ac18debd806e40a3b167c13d5851e, type: 2}
+  - Name: nerve
+    MaxDurability: 100
+    DamagePerHit: 10
+    DamageTiles:
+    - {fileID: 11400000, guid: 4cdf3c7c15ee8634aa0db91201dbb7e9, type: 2}
+    - {fileID: 11400000, guid: 5b98ed58a3d4c2c4b94b08b5cbaa66fb, type: 2}
   MinMoneyPerTile: 1
   MaxMoneyPerTile: 3
 --- !u!1 &519420028
