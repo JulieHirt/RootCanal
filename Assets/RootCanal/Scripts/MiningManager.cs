@@ -44,6 +44,7 @@ namespace RootCanal
                 return;
             }
 
+            Debug.Log($"Bacterium {bacterium.name} decreasing durability of tile instance {tile.name} by {DamagePerHit}...");
             tile.Durability!.AddToAmount(-DamagePerHit);
         }
     }

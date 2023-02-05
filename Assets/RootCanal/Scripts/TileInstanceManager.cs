@@ -31,6 +31,7 @@ namespace RootCanal
             if (_tiles.TryGetValue(position, out TileInstance tile))
                 return;
 
+            Debug.Log($"Instantiating tile instance at position {position}...");
             TileBase tileBase = Tilemap!.GetTile(position);
             GameObject tileObj = Instantiate(TileInstancePrefab, Tilemap.CellToWorld(position), Quaternion.identity, TileParent != null ? TileParent : transform)!;
             tile = tileObj.GetComponent<TileInstance>();
@@ -44,9 +45,12 @@ namespace RootCanal
 
         public void BreakTileAt(Vector3Int position)
         {
-            if (!_tiles.TryGetValue(position, out TileInstance tile))
+            if (!_tiles.TryGetValue(position, out TileInstance tile)) {
+                Debug.LogWarning($"No tile instance to break at position {position}...");
                 return;
+            }
 
+            Debug.Log($"Breaking tile instance at position {position}...");
             _tiles.Remove(position);
             Destroy(tile);
             TileInstanceDestroyed?.Invoke(this, (tile, position));
