@@ -41,7 +41,11 @@ namespace RootCanal
         public void BuySelectedUpgrade()
         {
             MoneyContext!.AddToAmount(-Upgrades[_selectedIndex].Cost);
-            SelectUpgradeButton(-1);
+            
+            if(Upgrades[_selectedIndex].Title == "Cell Divide")
+            {
+                Debug.Log("bought divide");
+            }
         }
 
         private void Start()
