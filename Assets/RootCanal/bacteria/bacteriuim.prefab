@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3099604717935794849}
   - component: {fileID: 9006535778537792581}
   - component: {fileID: 6872707919958407765}
+  - component: {fileID: 7837862251955722171}
   m_Layer: 0
   m_Name: bacteriuim
   m_TagString: Untagged
@@ -184,10 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7e6718adb8e8b43af45fb0db0d8606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Logging: 0
   Tilemap: {fileID: 0}
   Speed: 10
-  goalTilePos: {x: 0, y: 0, z: 0}
+  GoalTilePos: {x: 0, y: 0, z: 0}
+  Logging: 0
+  SelectionObject: {fileID: 440716974}
   DestinationReached:
     m_PersistentCalls:
       m_Calls: []
@@ -211,6 +213,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!58 &7837862251955722171
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099604717935794850}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.41
 --- !u!1 &4629828851398571462
 GameObject:
   m_ObjectHideFlags: 0

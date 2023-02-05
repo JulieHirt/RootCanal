@@ -38,7 +38,7 @@ namespace RootCanal
 
         private void mine(Bacterium bacterium)
         {
-            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(bacterium.goalTilePos);
+            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(bacterium.GoalTilePos);
             if (tile == null) {
                 Debug.LogError($"Bacterium {bacterium.name} is mining a tile with no {nameof(TileInstance)}", context: bacterium);
                 return;
