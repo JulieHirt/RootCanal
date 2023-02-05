@@ -22,7 +22,7 @@ namespace RootCanal
                 Debug.Log($"Cell coordinates of mouse are [X: {mouseCell.x} Y: {mouseCell.y}]");
 
             transform.position = mouseCell;
-            transform.position += new Vector3(0.5f, 0.5f, 0);
+            transform.position += new Vector3(0.5f, 0.5f, 0); //shift sprite from lower left corner to center of tile
 
             if (Tilemap.HasTile(mouseCell)) {
                 if (Logging)
