@@ -11,6 +11,7 @@ namespace RootCanal
     {
         [field: ShowInInspector, SerializeField]
         public int CurrentAmount { get; private set; }
+        public float CurrentAmountFraction => (CurrentAmount - MinAmount) / (float)(MaxAmount - MinAmount);
 
         [Min(0)] public int MaxAmount;
         [Min(0)] public int MinAmount;
