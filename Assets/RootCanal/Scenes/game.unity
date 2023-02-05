@@ -123,6 +123,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44560305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44560306}
+  - component: {fileID: 44560307}
+  m_Layer: 0
+  m_Name: service-bacteria-movement-manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &44560306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44560305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001897353}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44560307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44560305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1507312d42ce3f459005cac3159cead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 7061033550011858939}
+  BacteriaManager: {fileID: 593280905}
+  Camera: {fileID: 519420031}
+  SelectButton: Fire1
+  SetGoalButton: Fire2
+  SelectLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  Speed: 0.03
+  MinOffsetFromGoal: 0.05
+  GoalTilePos: {x: 0, y: 0, z: 0}
+  Logging: 0
+  DestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &57667313
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +344,7 @@ GameObject:
   - component: {fileID: 435457891}
   - component: {fileID: 435457892}
   m_Layer: 0
-  m_Name: service-mining-manager
+  m_Name: service-bacteria-mining-manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +380,8 @@ MonoBehaviour:
   Tilemap: {fileID: 7061033550011858939}
   TileInstanceManager: {fileID: 1676867370}
   BacteriaManager: {fileID: 593280905}
-  MoneyContext: {fileID: 0}
+  BacteriaMovementManager: {fileID: 44560307}
+  MoneyContext: {fileID: 1734161840}
   DamagePerHit: 10
   MinMoneyPerTile: 1
   MaxMoneyPerTile: 3
@@ -423,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 519420031}
-  CameraSpeed: 0.1
+  CameraSpeed: 0.05
   Logging: 0
   MinWorldBoundX: -24
   MaxWorldBoundX: 24
@@ -790,6 +850,7 @@ Transform:
   - {fileID: 1676867369}
   - {fileID: 593280904}
   - {fileID: 435457891}
+  - {fileID: 44560306}
   - {fileID: 7321629998587280872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1149,6 +1210,7 @@ MonoBehaviour:
   Tilemap: {fileID: 7061033550011858939}
   TileSelector: {fileID: 7321629998587280873}
   BacteriaManager: {fileID: 593280905}
+  BacteriaMovementManager: {fileID: 44560307}
   TileParent: {fileID: 313444866}
   TileInstancePrefab: {fileID: 6541101008562545210, guid: 15ce4de1519a20842ad2fa3c37548ec4, type: 3}
 --- !u!1 &1734161839
@@ -1246,14 +1308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bacterium-0
       objectReference: {fileID: 0}
-    - target: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: tm
-      value: 
-      objectReference: {fileID: 7061033550011858939}
-    - target: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Tilemap
-      value: 
-      objectReference: {fileID: 7061033550011858939}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991da447528977e478823ceb6306c91f, type: 3}
 --- !u!224 &1960864641 stripped
@@ -6979,7 +7033,7 @@ PrefabInstance:
       objectReference: {fileID: 7061033550011858939}
     - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -6,11 +6,12 @@ using UnityEngine.Tilemaps;
 
 namespace RootCanal
 {
-    public class MiningManager : MonoBehaviour
+    public class BacteriaMiningManager : MonoBehaviour
     {
         [Required] public Tilemap? Tilemap;
         [Required] public TileInstanceManager? TileInstanceManager;
         [Required] public BacteriaManager? BacteriaManager;
+        [Required] public BacteriaMovementManager? BacteriaMovementManager;
         [Required] public QuantityContext? MoneyContext;
         public int DamagePerHit = 10;
         public int MinMoneyPerTile = 1;
@@ -31,6 +32,7 @@ namespace RootCanal
                 if (e.tileInstance.Durability.CurrentAmount > 0)
                     return;
 
+                Tilemap!.DeleteCells(e.position, new(1, 1, 1));
                 TileInstanceManager!.BreakTileAt(e.position);
                 int money = Random.Range(MinMoneyPerTile, MaxMoneyPerTile);
                 MoneyContext!.AddToAmount(money);
@@ -38,7 +40,7 @@ namespace RootCanal
 
         private void mine(Bacterium bacterium)
         {
-            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(bacterium.goalTilePos);
+            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(BacteriaMovementManager!.GoalTilePos);
             if (tile == null) {
                 Debug.LogError($"Bacterium {bacterium.name} is mining a tile with no {nameof(TileInstance)}", context: bacterium);
                 return;
