@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 namespace RootCanal
 {
     public class Bacteria : MonoBehaviour
     {
+        public Tilemap tm;//set this in the inspector. References the tilemap from the world prefab.
         Transform selectionSprite;
         SpriteRenderer m_SpriteRenderer;
         //TODO: give player the ability to upgrade this
         public float Speed = 10f;
         Vector2 lastClickedPos;
         Vector2 prevPos; //keep track of position in prev frame to determine if moving left or right
+        public Vector3Int goalTilePos;
         bool moving;
         bool selected;//detects if the player has selected the bacteria to give commands to it
         public UnityEvent<Vector3Int> DestinationReached = new UnityEvent<Vector3Int>();
@@ -26,6 +29,22 @@ namespace RootCanal
         prevPos = (Vector2)this.transform.position;
 
     }
+    bool isAdjacentToDestinationTile()
+    {
+        //detect if the bacteria is adjacent to the destination tile
+        //is the x coordinate adjacent to the destination tile?
+        //is the y coordinate adjacent to the destination tile?
+        if(Mathf.Abs(transform.position.x - goalTilePos.x) < 1 && Mathf.Abs(transform.position.y - goalTilePos.y) < 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+        //it is 2D so we do not care about the z coordinate
+    }
 
         // Update is called once per frame
         void Update()
@@ -33,9 +52,10 @@ namespace RootCanal
             if(Input.GetMouseButtonDown(0) && selected == true)
             {
                 lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                goalTilePos = tm.WorldToCell(lastClickedPos);
                 moving = true;
             }
-            if(moving && (Vector2)transform.position != lastClickedPos)
+            if(moving && !isAdjacentToDestinationTile())
             {
                 float step = Speed*Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, lastClickedPos, step);
@@ -56,7 +76,8 @@ namespace RootCanal
                     moving = false;
                     //raise an event
                     //todo:fix this so the position is where you sent it
-                    DestinationReached.Invoke( new Vector3Int(0,0,0));
+                    Debug.Log("reached destination"+ goalTilePos);
+                    DestinationReached.Invoke(goalTilePos);
                 }
             }
             prevPos = transform.position; //set the prevPos for the next update cycle
