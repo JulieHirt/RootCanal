@@ -25,7 +25,6 @@ namespace RootCanal
         [Header("Upgrades")]
         public int UpgradeButtonHeight = 160;
         public RectTransform? UpgradeButtonsParent;
-        public string CostFormatString = "{0}";
         [Required, AssetsOnly] public GameObject? UpgradeButtonPrefab;
         [DisableInPlayMode] public UpgradeAsset[] Upgrades = Array.Empty<UpgradeAsset>();
 
@@ -60,9 +59,7 @@ namespace RootCanal
 
                 Vector2 btnPos = btn.Root!.anchoredPosition;
                 btn.Root.anchoredPosition = new Vector2(btnPos.x, x * -UpgradeButtonHeight);
-                btn.TxtTitle!.text = upgrade.Title;
-                btn.TxtCost!.text = string.Format(CostFormatString, upgrade.Cost);
-                btn.ImgThumbnail!.sprite = upgrade.Thumbnail;
+                btn.ImgMain!.sprite = upgrade.Thumbnail;
             }
 
             handleMoneyChange(delta: 0);

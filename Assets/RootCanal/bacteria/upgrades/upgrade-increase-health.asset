@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: upgrade-increase-health
   m_EditorClassIdentifier: 
   Title: Increase Health
-  Cost: 100
-  Image: {fileID: 0}
+  Cost: 10
+  Thumbnail: {fileID: 21300000, guid: 75020a51a88268445b6ce19183b52f51, type: 3}

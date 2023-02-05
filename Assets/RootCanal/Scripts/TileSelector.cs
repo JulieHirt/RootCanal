@@ -1,3 +1,5 @@
+#nullable enable
+
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,7 +19,7 @@ namespace RootCanal
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (Logging)
                 Debug.Log($"World coordinates of mouse are [X: {mouseWorldPos.x} Y: {mouseWorldPos.y}]");
-            Vector3Int mouseCell = Tilemap.WorldToCell(mouseWorldPos);
+            Vector3Int mouseCell = Tilemap!.WorldToCell(mouseWorldPos);
             if (Logging)
                 Debug.Log($"Cell coordinates of mouse are [X: {mouseCell.x} Y: {mouseCell.y}]");
 

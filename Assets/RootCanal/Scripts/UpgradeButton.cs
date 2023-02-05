@@ -1,7 +1,6 @@
 #nullable enable
 
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +10,7 @@ namespace RootCanal
     {
         [Required] public RectTransform? Root;
         [Required] public Button? Button;
-        [Required] public TMP_Text? TxtTitle;
-        [Required] public TMP_Text? TxtCost;
-        [Required] public Image? ImgThumbnail;
+        [Required] public Image? ImgMain;
         [Required] public Image? ImgDisabled;
         [Required] public Image? ImgSelected;
     }
