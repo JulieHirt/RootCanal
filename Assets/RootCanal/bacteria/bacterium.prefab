@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 6872707919958407765}
   - component: {fileID: 7837862251955722171}
   - component: {fileID: 3799098547848098971}
+  - component: {fileID: 4053584820659432001}
   m_Layer: 3
   m_Name: bacterium
   m_TagString: Untagged
@@ -366,6 +367,18 @@ MonoBehaviour:
           m_StringArgument: Bacteria-idle-animation
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7432831917540722728}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-idle-animation
+          m_BoolArgument: 0
+        m_CallState: 2
   Moving:
     m_PersistentCalls:
       m_Calls:
@@ -373,6 +386,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-idle-animation
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7432831917540722728}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -395,6 +420,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Bacteria-mining-animation
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7432831917540722728}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-mining-animation
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!95 &6872707919958407765
 Animator:
@@ -453,6 +490,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4053584820659432001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099604717935794850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ae8b60b4c5fb940ae34018194793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentAmount>k__BackingField: 10
+  MaxAmount: 10
+  MinAmount: 0
+  AmountChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  ReachedMinAmount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4629828851398571462
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d38bc85a07c98e42ac9bce7fddb53b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntervalSeconds: 1
+  IntervalSeconds: 0.5
   Triggered:
     m_PersistentCalls:
       m_Calls: []

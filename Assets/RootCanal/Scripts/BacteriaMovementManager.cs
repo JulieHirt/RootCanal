@@ -2,6 +2,7 @@
 
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
@@ -42,11 +43,21 @@ namespace RootCanal
         public string SetGoalButton = "Fire2";
         [Min(0f)] public float Speed = 0.1f;   //TODO: give player the ability to upgrade this
         [Min(0.001f)] public float MinOffsetFromGoal = 0.05f;
+        [Required] public Tile? EmptyTile;
         public UnityEvent<(Bacterium, Vector3Int)> GoalReached = new();
         public UnityEvent<(Bacterium, Vector3Int)> CanActionTile = new();
 
         public Vector3Int? GetActionCell(Bacterium bacterium) =>
             _bacteriaActionCells.TryGetValue(bacterium, out Vector3Int cell) ? cell : null;
+
+        public void CeaseActionAt(Vector3Int position)
+        {
+            Bacterium[] actioningBacteria = _bacteriaActionCells.Where(x => x.Value == position).Select(x => x.Key).ToArray();
+            foreach (Bacterium bacterium in actioningBacteria) {
+                _bacteriaActionCells.Remove(bacterium);
+                bacterium.Idling.Invoke();
+            }
+        }
 
         private void Awake()
         {
@@ -89,7 +100,9 @@ namespace RootCanal
             if (playerSettingDest && _selectedBacterium != null) {
                 mouseRayOrigin ??= Camera!.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int cell = Tilemap!.WorldToCell(mouseRayOrigin.Value);
-                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell), Tilemap.HasTile(cell));
+                TileBase tile = Tilemap!.GetTile(cell);
+                bool hasTile = tile != null && tile.name != EmptyTile!.name;
+                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell), hasTile);
                 Debug.Log($"Bacterium {_selectedBacterium.name}'s goal cell set to {goal.Cell}");
                 _bacteriaGoals[_selectedBacterium] = goal;
                 _bacteriaActionCells.Remove(_selectedBacterium);
@@ -121,7 +134,8 @@ namespace RootCanal
                     Vector3Int cellVectorToGoal = goal.Cell - cell;
                     Vector3 cellDirToGoal = new Vector3(cellVectorToGoal.x, cellVectorToGoal.y, cellVectorToGoal.z).normalized;
                     Vector3Int nextCell = new((int)(cell.x + cellDirToGoal.x), (int)(cell.y + cellDirToGoal.y));
-                    if (!Tilemap!.HasTile(nextCell))
+                    TileBase nextTile = Tilemap!.GetTile(nextCell);
+                    if (nextTile == null || nextTile.name == EmptyTile!.name)
                         bacterium.transform.Translate(Speed * vectorToGoal / distToGoal);
                     else {
                         bacterium.transform.position = Tilemap!.GetCellCenterWorld(cell);
