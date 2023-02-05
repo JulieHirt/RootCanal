@@ -19,13 +19,12 @@ namespace RootCanal
         [AssetsOnly] public GameObject? TileInstancePrefab;
 
         public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceCreated;
+        public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceDestroyed;
 
-        private void Awake()
-        {
+        private void Awake() =>
             BacteriaManager!.BacteriumSpawned.AddListener(bacteria =>
                 bacteria.DestinationReached.AddListener(onDestinationReached)
             );
-        }
 
         private void onDestinationReached(Vector3Int position)
         {
@@ -36,7 +35,7 @@ namespace RootCanal
             GameObject tileObj = Instantiate(TileInstancePrefab, Tilemap.CellToWorld(position), Quaternion.identity, TileParent != null ? TileParent : transform)!;
             tile = tileObj.GetComponent<TileInstance>();
             if (tile == null)
-                throw new System.Exception($"{nameof(TileInstancePrefab)} must have a {nameof(TileInstance)} component somewhere in its hierarchy");
+                throw new Exception($"{nameof(TileInstancePrefab)} must have a {nameof(TileInstance)} component somewhere in its hierarchy");
 
             _tiles[position] = tile;
 
@@ -50,6 +49,7 @@ namespace RootCanal
 
             _tiles.Remove(position);
             Destroy(tile);
+            TileInstanceDestroyed?.Invoke(this, (tile, position));
         }
 
         public TileInstance? GetTileAtPosition(Vector3Int position) =>

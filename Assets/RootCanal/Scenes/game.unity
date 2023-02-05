@@ -321,7 +321,10 @@ MonoBehaviour:
   Tilemap: {fileID: 7061033550011858939}
   TileInstanceManager: {fileID: 1676867370}
   BacteriaManager: {fileID: 593280905}
+  MoneyContext: {fileID: 0}
   DamagePerHit: 10
+  MinMoneyPerTile: 1
+  MaxMoneyPerTile: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +336,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: main-camera
   m_TagString: MainCamera
@@ -406,6 +410,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b217f888619cb54d9197e2072842cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 519420031}
+  CameraSpeed: 0.1
+  Logging: 0
+  MinWorldBoundX: -24
+  MaxWorldBoundX: 24
+  MinWorldBoundY: -27.5
+  MaxWorldBoundY: 34
+  MinScreenOffsetToMoveX: 100
+  MaxScreenOffsetToMoveX: 250
+  MinScreenOffsetToMoveY: 100
+  MaxScreenOffsetToMoveY: 100
 --- !u!1 &593280903
 GameObject:
   m_ObjectHideFlags: 0

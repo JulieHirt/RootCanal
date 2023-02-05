@@ -11,7 +11,10 @@ namespace RootCanal
         [Required] public Tilemap? Tilemap;
         [Required] public TileInstanceManager? TileInstanceManager;
         [Required] public BacteriaManager? BacteriaManager;
+        [Required] public QuantityContext? MoneyContext;
         public int DamagePerHit = 10;
+        public int MinMoneyPerTile = 1;
+        public int MaxMoneyPerTile = 3;
 
         private void Awake()
         {
@@ -25,8 +28,12 @@ namespace RootCanal
 
         private void onTileInstanceCreated(object sender, (TileInstance tileInstance, Vector3Int position) e) =>
             e.tileInstance.Durability!.AmountChanged.AddListener(delta => {
-                if (e.tileInstance.Durability.CurrentAmount == 0)
-                    TileInstanceManager!.BreakTileAt(e.position);
+                if (e.tileInstance.Durability.CurrentAmount > 0)
+                    return;
+
+                TileInstanceManager!.BreakTileAt(e.position);
+                int money = Random.Range(MinMoneyPerTile, MaxMoneyPerTile);
+                MoneyContext!.AddToAmount(money);
             });
 
         private void mine(Bacteria bacterium)
