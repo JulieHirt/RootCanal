@@ -14,6 +14,7 @@ namespace RootCanal
 
         [Required] public Tilemap? Tilemap;
         [Required] public TileSelector? TileSelector;
+        [Required] public BacteriaManager? BacteriaManager;
         public Transform? TileParent;
         [AssetsOnly] public GameObject? TileInstancePrefab;
 
@@ -21,10 +22,12 @@ namespace RootCanal
 
         private void Awake()
         {
-            TileSelector!.TileSelected.AddListener(onTileReached);
+            BacteriaManager!.BacteriumSpawned.AddListener(bacteria =>
+                bacteria.DestinationReached.AddListener(onDestinationReached)
+            );
         }
 
-        private void onTileReached(Vector3Int position)
+        private void onDestinationReached(Vector3Int position)
         {
             if (_tiles.TryGetValue(position, out TileInstance tile))
                 return;

@@ -888,6 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 7061033550011858939}
   TileSelector: {fileID: 7321629998587280873}
+  BacteriaManager: {fileID: 593280905}
   TileParent: {fileID: 313444866}
   TileInstancePrefab: {fileID: 6541101008562545210, guid: 15ce4de1519a20842ad2fa3c37548ec4, type: 3}
 --- !u!1 &1734161839
