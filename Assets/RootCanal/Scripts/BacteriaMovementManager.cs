@@ -1,6 +1,7 @@
 #nullable enable
 
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
@@ -9,17 +10,30 @@ namespace RootCanal
 {
     public class BacteriaMovementManager : MonoBehaviour
     {
-        private Vector2 _lastClickedPos;
-        private Vector2 _prevPos; //keep track of position in prev frame to determine if moving left or right
-        private bool _isMoving;
-        private Bacterium? _selectedBacterium;//detects if the player has selected the bacteria to give commands to it
+        private struct Goal
+        {
+            public Vector3Int Cell;
+            public Vector3 WorldPosition;
+
+            public Goal(Vector3Int cell, Vector3 worldPosition)
+            {
+                Cell = cell;
+                WorldPosition = worldPosition;
+            }
+        }
+
+        private Bacterium? _selectedBacterium;
+        private readonly Dictionary<Bacterium, Goal> _bacteriaGoals = new();
+        private readonly HashSet<Bacterium> _bacteriaArrived = new();
 
         [Required] public Tilemap? Tilemap;
         [Required] public BacteriaManager? BacteriaManager;
         [Required] public Camera? Camera;
         public string SelectButton = "Fire1";
+        public string SetGoalButton = "Fire2";
         public LayerMask SelectLayerMask;
-        [Min(0f)] public float Speed = 10f;   //TODO: give player the ability to upgrade this
+        [Min(0f)] public float Speed = 0.1f;   //TODO: give player the ability to upgrade this
+        [Min(0.001f)] public float MinOffsetFromGoal = 0.05f;
         public Vector3Int GoalTilePos;
         public bool Logging = false;
         public UnityEvent<(Bacterium, Vector3Int)> DestinationReached = new();
@@ -46,16 +60,11 @@ namespace RootCanal
             }
         }
 
-        private Vector3Int getCurrentTilePos()
-        {
-            //use the tilemap and current position to determine the cordinates of the tile we are in.
-            return Tilemap!.WorldToCell(transform.position);
-        }
         private bool isAtLeastOneAdjacentTileMineable()
         {
             //get all the adjacent cells
             //check each cell to see if it has a "tile" in it (tile = minable piece of tooth)
-            Vector3Int pos = getCurrentTilePos();
+            Vector3Int pos = Tilemap!.WorldToCell(transform.position);
             Vector3Int diagonalTopLeft = new(-1, -1);
             Vector3Int top = new(0, 1);
             Vector3Int diagonalTopRight = new(1, 1);
@@ -77,60 +86,44 @@ namespace RootCanal
             ;
         }
 
-        private void reachedDestination() //stop moving and raise event
-        {
-            _isMoving = false;
-            //move to center of cell
-            Vector3Int cellPosition = Tilemap!.LocalToCell(transform.localPosition);
-            transform.localPosition = Tilemap.GetCellCenterLocal(cellPosition);
-            //raise an event
-            if (Logging)
-                Debug.Log("reached destination" + GoalTilePos);
-            DestinationReached.Invoke((_selectedBacterium!, GoalTilePos));
-        }
-
         private void Update()
         {
+            // Set selected bacterium per player input
             bool playerSelecting = Input.GetButtonDown(SelectButton);
+            Vector3? mouseRayOrigin = null;
             if (playerSelecting) {
-                Vector3 mouseRayOrigin = Camera!.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hitInfo = Physics2D.GetRayIntersection(new Ray(mouseRayOrigin, Vector3.forward), Mathf.Infinity, SelectLayerMask);
-                if (hitInfo.collider != null) {
-                    if (hitInfo.collider.TryGetComponent(out Bacterium bacterium)) {
-                        setSelection(bacterium);
-                        return;
-                    }
-                }
-                setSelection(null);
+                mouseRayOrigin = Camera!.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hitInfo = Physics2D.GetRayIntersection(new Ray(mouseRayOrigin.Value, Vector3.forward), Mathf.Infinity, SelectLayerMask);
+                if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out Bacterium bacterium))
+                    setSelection(bacterium);
+                else
+                    setSelection(null);
             }
 
-            ////Input.GetMouseButtonDown(1) detects a mouse click anywhere on the screen.
-            //if (Input.GetMouseButtonDown(1) && _selectedBacterium) {
-            //    _lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //    GoalTilePos = Tilemap!.WorldToCell(_lastClickedPos);
-            //    _isMoving = true;
-            //}
+            // Set goal cell for selected bacterium, per player input
+            bool playerSettingDest = Input.GetButtonDown(SetGoalButton);
+            if (playerSettingDest && _selectedBacterium != null) {
+                mouseRayOrigin ??= Camera!.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int cell = Tilemap!.WorldToCell(mouseRayOrigin.Value);
+                _bacteriaGoals[_selectedBacterium] = new Goal(cell, Tilemap!.GetCellCenterWorld(cell));
+            }
 
-            //if (_isMoving && (Vector2)transform.position != _lastClickedPos) {
-            //    float step = Speed * Time.deltaTime;
-            //    transform.position = Vector2.MoveTowards(transform.position, _lastClickedPos, step);
-            //    //flip sprite left or right
-            //    if (transform.position.x < _prevPos.x) {
-            //        SpriteRenderer!.flipX = false; //this is preferable to gameObject.GetComponent<Rigidbody2D>().transform.Rotate(0, 180, 0);
-            //        //this way does not flip the colider. and it results in bacteria not constantly flipping back and forth.
-            //    }
-            //    else if (transform.position.x > _prevPos.x) {
-            //        SpriteRenderer!.flipX = true;
-            //    }
-            //    //to do: hey am I next to a tile? stop. (yes, even if I have not reached my destination!!)
-            //    if (isAtLeastOneAdjacentTileMineable()) {
-            //        reachedDestination();
-            //    }
-            //}
-            //else {
-            //    reachedDestination();
-            //}
-            //_prevPos = transform.position; //set the prevPos for the next update cycle
+            // Move all bacteria towards their goals
+            _bacteriaArrived.Clear();
+            foreach (Bacterium bacterium in _bacteriaGoals.Keys) {
+                Goal goal = _bacteriaGoals[bacterium];
+                Vector3 vectorToGoal = goal.WorldPosition - bacterium.transform.position;
+                float distToGoal = vectorToGoal.magnitude;
+                if (distToGoal <= MinOffsetFromGoal) {
+                    bacterium.transform.position = goal.WorldPosition;
+                    _bacteriaArrived.Add(bacterium); ;
+                    //DestinationReached.Invoke((bacterium, goal.Cell));
+                }
+                else
+                    bacterium.transform.Translate(Speed * vectorToGoal / distToGoal);
+            }
+            foreach (Bacterium bacterium in _bacteriaArrived)   // Can't remove elements from the goal dictionary while enumerating it above
+                _bacteriaGoals.Remove(bacterium);
         }
     }
 }

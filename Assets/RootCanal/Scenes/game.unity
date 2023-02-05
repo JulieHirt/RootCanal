@@ -171,10 +171,12 @@ MonoBehaviour:
   BacteriaManager: {fileID: 593280905}
   Camera: {fileID: 519420031}
   SelectButton: Fire1
+  SetGoalButton: Fire2
   SelectLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  Speed: 10
+  Speed: 0.03
+  MinOffsetFromGoal: 0.05
   GoalTilePos: {x: 0, y: 0, z: 0}
   Logging: 0
   DestinationReached:
@@ -481,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 519420031}
-  CameraSpeed: 0.1
+  CameraSpeed: 0.05
   Logging: 0
   MinWorldBoundX: -24
   MaxWorldBoundX: 24
