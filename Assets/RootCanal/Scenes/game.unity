@@ -1330,8 +1330,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1734161841}
+  - component: {fileID: 1734161844}
   - component: {fileID: 1734161842}
-  - component: {fileID: 1734161843}
   m_Layer: 0
   m_Name: event-system
   m_TagString: Untagged
@@ -1375,52 +1375,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1774316053
-GameObject:
+--- !u!114 &1734161842
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1774316054}
-  - component: {fileID: 1774316056}
-  - component: {fileID: 1774316055}
-  m_Layer: 5
-  m_Name: pause-buddy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1774316054
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774316053}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1968191274}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: -352}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1774316055
   m_GameObject: {fileID: 1734161839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd86d33e511201448a78416655a79e49, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d38bc85a07c98e42ac9bce7fddb53b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouthwash: {fileID: 727701335974428342, guid: bca27f30da37db044802235ab5cce2bd, type: 3}
+  IntervalSeconds: 60
+  Triggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1734161844}
+        m_TargetAssemblyTypeName: RootCanal.MouthwashSpawn, Assembly-CSharp
+        m_MethodName: SpawnMouthwash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1734161843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,6 +1433,71 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1734161844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734161839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd86d33e511201448a78416655a79e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthwash: {fileID: 727701335974428342, guid: bca27f30da37db044802235ab5cce2bd, type: 3}
+--- !u!1 &1774316053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774316054}
+  - component: {fileID: 1774316056}
+  - component: {fileID: 1774316055}
+  - component: {fileID: 1734161843}
+  m_Layer: 5
+  m_Name: pause-buddy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1774316054
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774316053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1968191274}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -150, y: -352}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1774316055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774316053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd86d33e511201448a78416655a79e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthwash: {fileID: 0}
 --- !u!222 &1774316056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1459,28 +1506,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774316053}
   m_CullTransparentMesh: 1
-  m_GameObject: {fileID: 1734161839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d38bc85a07c98e42ac9bce7fddb53b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IntervalSeconds: 60
-  Triggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1734161842}
-        m_TargetAssemblyTypeName: RootCanal.MouthwashSpawn, Assembly-CSharp
-        m_MethodName: SpawnMouthwash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1795779226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
