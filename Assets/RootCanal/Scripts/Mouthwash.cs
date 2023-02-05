@@ -7,7 +7,7 @@ namespace RootCanal
     public class Mouthwash : MonoBehaviour
     {
         public Vector3 _target;
-        public float speed = 1.0f;
+        public float speed = 5.0f;
         void Start()
         {
             _target = new Vector3(0, -75, 0);
@@ -35,8 +35,7 @@ namespace RootCanal
         void OnTriggerEnter2D(Collider2D col)
         {
             Debug.Log("GameObject1 collided with " + col.name);
-            QuantityContext qc = col.GetComponent<QuantityContext>();
-            qc.AddToAmount(-2);
+            col.gameObject.GetComponent<Bacterium>().Health -= 2;
         }
     }
 }
