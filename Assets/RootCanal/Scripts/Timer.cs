@@ -12,6 +12,12 @@ namespace RootCanal
 
         private void OnEnable() => _currTime = 0f;
 
+        void Start()
+        {
+            TimerEvent.TimerAction += Update;
+        }
+        
+
         // Update is called once per frame
         private void Update()
         {
