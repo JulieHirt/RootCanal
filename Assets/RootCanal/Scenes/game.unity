@@ -253,11 +253,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &210754278 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6551181609980820896, guid: 991da447528977e478823ceb6306c91f, type: 3}
-  m_PrefabInstance: {fileID: 1872089533}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &228485288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,7 +946,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1556,38 +1551,6 @@ PrefabInstance:
     - target: {fileID: 3099604717935794850, guid: 991da447528977e478823ceb6306c91f, type: 3}
       propertyPath: m_Name
       value: bacterium-0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 210754278}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOneShot
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 8300000, guid: d28971f31fd4aad468a3de2ab6507747, type: 3}
-    - target: {fileID: 8423069541858008270, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Triggers.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991da447528977e478823ceb6306c91f, type: 3}
