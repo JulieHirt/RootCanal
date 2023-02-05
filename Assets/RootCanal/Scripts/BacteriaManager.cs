@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,21 @@ namespace RootCanal
 {
     public class BacteriaManager : MonoBehaviour, IEnumerable<Bacterium>
     {
+        private bool _hasLost = false;
         private readonly List<Bacterium> _bacteria = new();
 
         public UnityEvent<Bacterium> BacteriumAdded = new();
         public UnityEvent<Bacterium> BacteriumKilled = new();
+        public UnityEvent AllBacteriaKilled = new();
+        [Required] public Transform? BacteriaParent;
+
+        private void Update()
+        {
+            if (BacteriaParent.GetComponentInChildren<Bacterium>() == null && !_hasLost) {
+                _hasLost = true;
+                AllBacteriaKilled.Invoke();
+            }
+        }
 
         public void AddExistingBacterium(Bacterium bacterium)
         {
@@ -39,10 +51,7 @@ namespace RootCanal
             Destroy(bacterium.gameObject);
         }
 
-        private Vector3 getDividedSpawnPosition(Vector3 originalPosition)
-        {
-            return originalPosition;
-        }
+        private Vector3 getDividedSpawnPosition(Vector3 originalPosition) => originalPosition;
 
         IEnumerator IEnumerable.GetEnumerator() => _bacteria.GetEnumerator();
     }
