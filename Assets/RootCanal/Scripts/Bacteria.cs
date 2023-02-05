@@ -75,19 +75,12 @@ namespace RootCanal
         }
         private void Update()
         {
-            //detect if the player has clicked on the bacteria to select it
-            bool isPlayerSelecting = Input.GetMouseButtonDown(0);
-            if (isPlayerSelecting) {
-                if (_isSelected) {
-                    lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    goalTilePos = Tilemap.WorldToCell(lastClickedPos);
-                    moving = true;
-                }
-                else {
-                    //toggle if the bacteria is selected
-                    _isSelected = !_isSelected;
-                    selectionSprite.gameObject.SetActive(_isSelected);
-                }
+            //nput.GetMouseButtonDown(0) detects a mouse click anywhere on the screen. Also
+            if (Input.GetMouseButtonDown(0) && _isSelected == true)
+             {
+                lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                goalTilePos = Tilemap.WorldToCell(lastClickedPos);
+                moving = true;
             }
 
             if (moving && (Vector2)transform.position != lastClickedPos) {
@@ -112,6 +105,13 @@ namespace RootCanal
             }
             prevPos = transform.position; //set the prevPos for the next update cycle
 
+        }
+        void OnMouseDown()//detect if the player has clicked on the bacteria to select it
+        //this function detects clicks on the bacteria sprite specifically
+        //does not detect clicks on other areas of the screen
+        {
+        _isSelected = !_isSelected;//toggle if the bacteria is selected
+        selectionSprite.gameObject.SetActive(_isSelected); //toggle the sprite that highlights when selected
         }
     }
 }
