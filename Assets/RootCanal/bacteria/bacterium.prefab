@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 3099604717935794849}
+  MiningTimer: {fileID: 7432831917540722728}
   LineRenderer: {fileID: 6728168871342466015}
   Selected:
     m_PersistentCalls:
@@ -348,6 +349,51 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Idling:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6872707919958407765}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-idle-animation
+          m_BoolArgument: 0
+        m_CallState: 2
+  Moving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6872707919958407765}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-idle-animation
+          m_BoolArgument: 0
+        m_CallState: 2
+  Mining:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6872707919958407765}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bacteria-mining-animation
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!95 &6872707919958407765
@@ -447,12 +493,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4629828851398571462}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d38bc85a07c98e42ac9bce7fddb53b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntervalSeconds: 0.25
+  IntervalSeconds: 1
   Triggered:
     m_PersistentCalls:
       m_Calls: []

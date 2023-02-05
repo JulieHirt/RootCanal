@@ -24,10 +24,10 @@ namespace RootCanal
 
         private void Awake() =>
             BacteriaManager!.BacteriumAdded.AddListener(bacterium =>
-                BacteriaMovementManager!.DestinationReached.AddListener(onDestinationReached)
+                BacteriaMovementManager!.CanActionTile.AddListener(onActioningTile)
             );
 
-        private void onDestinationReached((Bacterium bacterium, Vector3Int position) e)
+        private void onActioningTile((Bacterium bacterium, Vector3Int position) e)
         {
             if (_tiles.TryGetValue(e.position, out TileInstance tile))
                 return;

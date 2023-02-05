@@ -20,8 +20,7 @@ namespace RootCanal
         private void Awake()
         {
             BacteriaManager!.BacteriumAdded.AddListener(bacterium => {
-                Timer miningTimer = bacterium.GetComponent<Timer>();
-                miningTimer.Triggered.AddListener(() => mine(bacterium));
+                bacterium.MiningTimer!.Triggered.AddListener(() => mine(bacterium));
             });
 
             TileInstanceManager!.TileInstanceCreated += onTileInstanceCreated;
@@ -40,9 +39,14 @@ namespace RootCanal
 
         private void mine(Bacterium bacterium)
         {
-            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(BacteriaMovementManager!.GoalTilePos);
+            Vector3Int? mineCell = BacteriaMovementManager!.GetActionCell(bacterium);
+            if (mineCell == null) {
+                Debug.LogError($"Bacterium {bacterium.name} has no cell to mine", context: bacterium);
+                return;
+            }
+            TileInstance? tile = TileInstanceManager!.GetTileAtPosition(mineCell.Value);
             if (tile == null) {
-                Debug.LogError($"Bacterium {bacterium.name} is mining a tile with no {nameof(TileInstance)}", context: bacterium);
+                Debug.LogError($"Bacterium {bacterium.name} is mining a cell with no {nameof(TileInstance)}", context: bacterium);
                 return;
             }
 
