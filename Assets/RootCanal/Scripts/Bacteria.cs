@@ -16,7 +16,7 @@ namespace RootCanal
         private Vector2 prevPos; //keep track of position in prev frame to determine if moving left or right
         public Vector3Int goalTilePos;
         private bool moving;
-        private bool selected;//detects if the player has selected the bacteria to give commands to it
+        private bool _isSelected;//detects if the player has selected the bacteria to give commands to it
         public UnityEvent<Vector3Int> DestinationReached = new UnityEvent<Vector3Int>();
 
         private void Start()
@@ -33,11 +33,21 @@ namespace RootCanal
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && selected == true) {
-                lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                goalTilePos = tm.WorldToCell(lastClickedPos);
-                moving = true;
+            //detect if the player has clicked on the bacteria to select it
+            bool isPlayerSelecting = Input.GetMouseButtonDown(0);
+            if (isPlayerSelecting) {
+                if (_isSelected) {
+                    lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    goalTilePos = tm.WorldToCell(lastClickedPos);
+                    moving = true;
+                }
+                else {
+                    //toggle if the bacteria is selected
+                    _isSelected = !_isSelected;
+                    selectionSprite.gameObject.SetActive(_isSelected);
+                }
             }
+
             if (moving && (Vector2)transform.position != lastClickedPos) {
                 float step = Speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, lastClickedPos, step);
@@ -62,11 +72,6 @@ namespace RootCanal
             }
             prevPos = transform.position; //set the prevPos for the next update cycle
 
-        }
-        private void OnMouseDown()//detect if the player has clicked on the bacteria to select it
-        {//toggle if the bacteria is selected
-            selected = !selected;
-            selectionSprite.gameObject.SetActive(selected);
         }
     }
 }
