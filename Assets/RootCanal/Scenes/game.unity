@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bacteria
       objectReference: {fileID: 0}
+    - target: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
+      propertyPath: tm
+      value: 
+      objectReference: {fileID: 7061033550011858939}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991da447528977e478823ceb6306c91f, type: 3}
 --- !u!224 &1960864641 stripped
