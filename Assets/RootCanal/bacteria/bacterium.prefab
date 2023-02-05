@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 4155015620769479191}
   - component: {fileID: 7432831917540722728}
   - component: {fileID: 6551181609980820896}
+  - component: {fileID: 8423069541858008270}
   m_Layer: 3
   m_Name: mining-timer
   m_TagString: Untagged
@@ -559,7 +560,19 @@ MonoBehaviour:
   IntervalSeconds: 0.5
   Triggered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8423069541858008270}
+        m_TargetAssemblyTypeName: RootCanal.RandomTrigger, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &6551181609980820896
 AudioSource:
   m_ObjectHideFlags: 0
@@ -569,7 +582,7 @@ AudioSource:
   m_GameObject: {fileID: 4629828851398571462}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4633849426701396848, guid: d442cf6fe0b86dc47ad903181ee4e837, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -656,3 +669,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8423069541858008270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629828851398571462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b848915327e924db3c2f5cba20788e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Triggers:
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
