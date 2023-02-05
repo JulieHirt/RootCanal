@@ -79,8 +79,8 @@ namespace RootCanal
         }
         private void Update()
         {
-            //Input.GetMouseButtonDown(0) detects a mouse click anywhere on the screen.
-            if (Input.GetMouseButtonDown(0) && _isSelected == true) {
+            //Input.GetMouseButtonDown(1) detects a mouse click anywhere on the screen.
+            if (Input.GetMouseButtonDown(1) && _isSelected == true) {
                 _lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GoalTilePos = Tilemap!.WorldToCell(_lastClickedPos);
                 _isMoving = true;
