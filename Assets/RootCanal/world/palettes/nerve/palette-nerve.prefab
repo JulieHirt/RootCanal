@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7895771049933227852}
   - component: {fileID: 6828867166616004462}
   m_Layer: 0
-  m_Name: nerve-pallet-world
+  m_Name: palette-nerve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

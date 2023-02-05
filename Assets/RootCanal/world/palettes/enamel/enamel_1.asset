@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Nerve_1
+  m_Name: enamel_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -323997113, guid: 9ce0631691d613044ac5fdc6448b9227, type: 3}
+  m_Sprite: {fileID: -769506104, guid: 8e9c33bff828e504fb64d5f02cc30c31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
