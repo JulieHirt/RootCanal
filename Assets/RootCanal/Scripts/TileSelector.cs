@@ -13,12 +13,15 @@ namespace RootCanal
         void Update()
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //Debug.Log(string.Format("Co-ords of mouse is [X: {0} Y: {0}]", mousePos.x, mousePos.y));
+            Debug.Log(string.Format("Co-ords of mouse is [X: {0} Y: {0}]", mousePos.x, mousePos.y));
             Vector3Int coordinate = tm.WorldToCell(mousePos);
-            //Debug.Log(coordinate);
+            Debug.Log(coordinate);
+            transform.position = coordinate;
+            Debug.Log(transform.position);
             if (tm.HasTile(coordinate))
             {
                 Debug.Log("there is a tile here!");
+                
             }
 
         }
