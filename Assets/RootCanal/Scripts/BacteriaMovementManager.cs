@@ -24,7 +24,7 @@ namespace RootCanal
 
         private Bacterium? _selectedBacterium;
         private readonly Dictionary<Bacterium, Goal> _bacteriaGoals = new();
-        private readonly HashSet<Bacterium> _bacteriaArrived = new();
+        private readonly HashSet<Bacterium> _bacteriaStopped = new();
 
         [Required] public Tilemap? Tilemap;
         [Required] public BacteriaManager? BacteriaManager;
@@ -105,25 +105,46 @@ namespace RootCanal
             if (playerSettingDest && _selectedBacterium != null) {
                 mouseRayOrigin ??= Camera!.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int cell = Tilemap!.WorldToCell(mouseRayOrigin.Value);
-                _bacteriaGoals[_selectedBacterium] = new Goal(cell, Tilemap!.GetCellCenterWorld(cell));
+                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell));
+                _bacteriaGoals[_selectedBacterium] = goal;
+                if (_selectedBacterium.LineRenderer != null) {
+                    _selectedBacterium.LineRenderer.enabled = true;
+                    _selectedBacterium.LineRenderer.SetPosition(1, goal.WorldPosition);
+                }
             }
 
             // Move all bacteria towards their goals
-            _bacteriaArrived.Clear();
+            _bacteriaStopped.Clear();
             foreach (Bacterium bacterium in _bacteriaGoals.Keys) {
                 Goal goal = _bacteriaGoals[bacterium];
                 Vector3 vectorToGoal = goal.WorldPosition - bacterium.transform.position;
                 float distToGoal = vectorToGoal.magnitude;
                 if (distToGoal <= MinOffsetFromGoal) {
                     bacterium.transform.position = goal.WorldPosition;
-                    _bacteriaArrived.Add(bacterium); ;
+                    _bacteriaStopped.Add(bacterium);
                     //DestinationReached.Invoke((bacterium, goal.Cell));
                 }
-                else
-                    bacterium.transform.Translate(Speed * vectorToGoal / distToGoal);
+                else {
+                    if (bacterium.LineRenderer != null)
+                        bacterium.LineRenderer.SetPosition(0, bacterium.transform.position);
+
+                    Vector3Int cell = Tilemap!.WorldToCell(bacterium.transform.position);
+                    Vector3Int cellVectorToGoal = goal.Cell - cell;
+                    Vector3 cellDirToGoal = new Vector3(cellVectorToGoal.x, cellVectorToGoal.y, cellVectorToGoal.z).normalized;
+                    Vector3Int nextCell = new((int)(cell.x + cellDirToGoal.x), (int)(cell.y + cellDirToGoal.y));
+                    if (!Tilemap!.HasTile(nextCell))
+                        bacterium.transform.Translate(Speed * vectorToGoal / distToGoal);
+                    else {
+                        bacterium.transform.position = Tilemap!.GetCellCenterWorld(cell);
+                        _bacteriaStopped.Add(bacterium);
+                    }
+                }
             }
-            foreach (Bacterium bacterium in _bacteriaArrived)   // Can't remove elements from the goal dictionary while enumerating it above
+            foreach (Bacterium bacterium in _bacteriaStopped) {   // Can't remove elements from the goal dictionary while enumerating it above
                 _bacteriaGoals.Remove(bacterium);
+                if (bacterium.LineRenderer != null)
+                    bacterium.LineRenderer.enabled = false;
+            }
         }
     }
 }

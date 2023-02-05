@@ -32,6 +32,7 @@ namespace RootCanal
                 if (e.tileInstance.Durability.CurrentAmount > 0)
                     return;
 
+                Tilemap!.DeleteCells(e.position, new(1, 1, 1));
                 TileInstanceManager!.BreakTileAt(e.position);
                 int money = Random.Range(MinMoneyPerTile, MaxMoneyPerTile);
                 MoneyContext!.AddToAmount(money);

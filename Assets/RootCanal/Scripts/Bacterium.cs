@@ -9,6 +9,7 @@ namespace RootCanal
     public class Bacterium : MonoBehaviour
     {
         [Required] public SpriteRenderer? SpriteRenderer;
+        public LineRenderer? LineRenderer;
         public UnityEvent Selected = new();
         public UnityEvent Deselected = new();
     }

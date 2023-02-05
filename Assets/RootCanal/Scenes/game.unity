@@ -1211,10 +1211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1642053093}
     m_Modifications:
-    - target: {fileID: 440716972, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3099604717935794848, guid: 991da447528977e478823ceb6306c91f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1243,18 +1239,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bacterium-0
       objectReference: {fileID: 0}
-    - target: {fileID: 4629828851398571462, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: tm
-      value: 
-      objectReference: {fileID: 7061033550011858939}
-    - target: {fileID: 9006535778537792581, guid: 991da447528977e478823ceb6306c91f, type: 3}
-      propertyPath: Tilemap
-      value: 
-      objectReference: {fileID: 7061033550011858939}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991da447528977e478823ceb6306c91f, type: 3}
 --- !u!224 &1960864641 stripped
