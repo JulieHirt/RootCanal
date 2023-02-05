@@ -1726,6 +1726,10 @@ PrefabInstance:
       propertyPath: MoneyContext
       value: 
       objectReference: {fileID: 1734161840}
+    - target: {fileID: 3943761910835560474, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
+      propertyPath: bacteriaManager
+      value: 
+      objectReference: {fileID: 593280905}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 435608bf8b9d5f746afe329a079ed062, type: 3}
 --- !u!1001 &7061033550011858938

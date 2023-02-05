@@ -15,7 +15,7 @@ namespace RootCanal
         private int _selectedIndex = -1;
 
         [Required] public QuantityContext? MoneyContext;
-
+        [Required] public BacteriaManager bacteriaManager;
         [Header("Money text")]
         [Required] public TMP_Text? TxtAmount;
         public string AmountFormatString = "{0}";
@@ -45,6 +45,9 @@ namespace RootCanal
             if(Upgrades[_selectedIndex].Title == "Cell Divide")
             {
                 Debug.Log("bought divide");
+                //get one bacteria. the first one.
+                Bacterium bac = FindObjectOfType<Bacterium>();
+                bacteriaManager.DivideBacterium(bac);
             }
         }
 
