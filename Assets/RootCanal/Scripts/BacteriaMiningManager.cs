@@ -55,7 +55,7 @@ namespace RootCanal
                 onTileInstanceBroken(e.tileInstance, e.position));
         }
 
-        private string getTissueNameFromTileName(string tileName) => tileName.Substring(0, tileName.IndexOf("_"));
+        private string getTissueNameFromTileName(string tileName) => tileName[..tileName.IndexOf("_")];
 
         private void onTileInstanceBroken(TileInstance tileInstance, Vector3Int position)
         {

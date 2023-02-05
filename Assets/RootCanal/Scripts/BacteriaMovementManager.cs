@@ -100,7 +100,9 @@ namespace RootCanal
             if (playerSettingDest && _selectedBacterium != null) {
                 mouseRayOrigin ??= Camera!.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int cell = Tilemap!.WorldToCell(mouseRayOrigin.Value);
-                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell), Tilemap.HasTile(cell));
+                TileBase tile = Tilemap!.GetTile(cell);
+                bool hasTile = tile != null && tile.name != EmptyTile!.name;
+                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell), hasTile);
                 Debug.Log($"Bacterium {_selectedBacterium.name}'s goal cell set to {goal.Cell}");
                 _bacteriaGoals[_selectedBacterium] = goal;
                 _bacteriaActionCells.Remove(_selectedBacterium);
