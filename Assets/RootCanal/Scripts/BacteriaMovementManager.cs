@@ -14,29 +14,39 @@ namespace RootCanal
         {
             public Vector3Int Cell;
             public Vector3 WorldPosition;
+            public bool HasTile;
 
-            public Goal(Vector3Int cell, Vector3 worldPosition)
+            public Goal(Vector3Int cell, Vector3 worldPosition, bool hasTile)
             {
                 Cell = cell;
                 WorldPosition = worldPosition;
+                HasTile = hasTile;
             }
         }
 
         private Bacterium? _selectedBacterium;
         private readonly Dictionary<Bacterium, Goal> _bacteriaGoals = new();
+        private readonly Dictionary<Bacterium, Vector3Int> _bacteriaActionCells = new();
         private readonly HashSet<Bacterium> _bacteriaStopped = new();
 
         [Required] public Tilemap? Tilemap;
         [Required] public BacteriaManager? BacteriaManager;
         [Required] public Camera? Camera;
+        public bool Logging = false;
+
+        [Header("Selecting")]
         public string SelectButton = "Fire1";
-        public string SetGoalButton = "Fire2";
+
+        [Header("Goal Setting")]
         public LayerMask SelectLayerMask;
+        public string SetGoalButton = "Fire2";
         [Min(0f)] public float Speed = 0.1f;   //TODO: give player the ability to upgrade this
         [Min(0.001f)] public float MinOffsetFromGoal = 0.05f;
-        public Vector3Int GoalTilePos;
-        public bool Logging = false;
-        public UnityEvent<(Bacterium, Vector3Int)> DestinationReached = new();
+        public UnityEvent<(Bacterium, Vector3Int)> GoalReached = new();
+        public UnityEvent<(Bacterium, Vector3Int)> CanActionTile = new();
+
+        public Vector3Int? GetActionCell(Bacterium bacterium) =>
+            _bacteriaActionCells.TryGetValue(bacterium, out Vector3Int cell) ? cell : null;
 
         private void Awake()
         {
@@ -60,32 +70,6 @@ namespace RootCanal
             }
         }
 
-        private bool isAtLeastOneAdjacentTileMineable()
-        {
-            //get all the adjacent cells
-            //check each cell to see if it has a "tile" in it (tile = minable piece of tooth)
-            Vector3Int pos = Tilemap!.WorldToCell(transform.position);
-            Vector3Int diagonalTopLeft = new(-1, -1);
-            Vector3Int top = new(0, 1);
-            Vector3Int diagonalTopRight = new(1, 1);
-            Vector3Int left = new(1, 0);
-            Vector3Int right = new(1, 0);
-            Vector3Int diagonalBottomLeft = new(1, 1);
-            Vector3Int bottom = new(0, 1);
-            Vector3Int diagonalBottomRight = new(1, 1);
-
-            return
-                Tilemap!.HasTile(pos + diagonalTopLeft) ||
-                Tilemap.HasTile(pos + top) ||
-                Tilemap.HasTile(pos + diagonalTopRight) ||
-                Tilemap.HasTile(pos + left) ||
-                Tilemap.HasTile(pos + right) ||
-                Tilemap.HasTile(pos + diagonalBottomLeft) ||
-                Tilemap.HasTile(pos + bottom) ||
-                Tilemap.HasTile(pos + diagonalBottomRight)
-            ;
-        }
-
         private void Update()
         {
             // Set selected bacterium per player input
@@ -105,12 +89,15 @@ namespace RootCanal
             if (playerSettingDest && _selectedBacterium != null) {
                 mouseRayOrigin ??= Camera!.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int cell = Tilemap!.WorldToCell(mouseRayOrigin.Value);
-                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell));
+                Goal goal = new(cell, Tilemap!.GetCellCenterWorld(cell), Tilemap.HasTile(cell));
+                Debug.Log($"Bacterium {_selectedBacterium.name}'s goal cell set to {goal.Cell}");
                 _bacteriaGoals[_selectedBacterium] = goal;
+                _bacteriaActionCells.Remove(_selectedBacterium);
                 if (_selectedBacterium.LineRenderer != null) {
                     _selectedBacterium.LineRenderer.enabled = true;
                     _selectedBacterium.LineRenderer.SetPosition(1, goal.WorldPosition);
                 }
+                _selectedBacterium.Moving.Invoke();
             }
 
             // Move all bacteria towards their goals
@@ -120,9 +107,11 @@ namespace RootCanal
                 Vector3 vectorToGoal = goal.WorldPosition - bacterium.transform.position;
                 float distToGoal = vectorToGoal.magnitude;
                 if (distToGoal <= MinOffsetFromGoal) {
+                    Debug.Log($"Bacterium {bacterium.name} reached its goal cell {goal.Cell}");
                     bacterium.transform.position = goal.WorldPosition;
                     _bacteriaStopped.Add(bacterium);
-                    //DestinationReached.Invoke((bacterium, goal.Cell));
+                    bacterium.Idling.Invoke();
+                    GoalReached.Invoke((bacterium, goal.Cell));
                 }
                 else {
                     if (bacterium.LineRenderer != null)
@@ -137,6 +126,16 @@ namespace RootCanal
                     else {
                         bacterium.transform.position = Tilemap!.GetCellCenterWorld(cell);
                         _bacteriaStopped.Add(bacterium);
+                        if (goal.HasTile && Mathf.Abs(goal.Cell.x - cell.x) <= 1 && Mathf.Abs(goal.Cell.y - cell.y) <= 1) {
+                            Debug.Log($"Bacterium {bacterium.name} reached cell {cell} and is now actioning its goal cell {goal.Cell}");
+                            _bacteriaActionCells[bacterium] = goal.Cell;
+                            bacterium.Mining.Invoke();
+                            CanActionTile.Invoke((bacterium, goal.Cell));
+                        }
+                        else {
+                            Debug.Log($"Bacterium {bacterium.name} was stopped at cell {cell} on its way to goal cell {goal.Cell}");
+                            bacterium.Idling.Invoke();
+                        }
                     }
                 }
             }

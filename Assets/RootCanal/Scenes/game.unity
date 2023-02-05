@@ -170,16 +170,18 @@ MonoBehaviour:
   Tilemap: {fileID: 7061033550011858939}
   BacteriaManager: {fileID: 593280905}
   Camera: {fileID: 519420031}
+  Logging: 0
   SelectButton: Fire1
-  SetGoalButton: Fire2
   SelectLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  SetGoalButton: Fire2
   Speed: 0.03
   MinOffsetFromGoal: 0.05
-  GoalTilePos: {x: 0, y: 0, z: 0}
-  Logging: 0
-  DestinationReached:
+  GoalReached:
+    m_PersistentCalls:
+      m_Calls: []
+  CanActionTile:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &57667313
@@ -1501,7 +1503,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3099604717935794848, guid: 991da447528977e478823ceb6306c91f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3099604717935794848, guid: 991da447528977e478823ceb6306c91f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7211,6 +7213,14 @@ PrefabInstance:
     - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
