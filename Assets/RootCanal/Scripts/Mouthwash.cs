@@ -28,6 +28,8 @@ namespace RootCanal
         void OnTriggerEnter2D(Collider2D col)
         {
             Debug.Log("GameObject1 collided with " + col.name);
+            QuantityContext qc = col.GetComponent<QuantityContext>();
+            qc.AddToAmount(-2);
         }
     }
 }
