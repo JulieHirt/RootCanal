@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace RootCanal
 {
-    public class Bacteria : MonoBehaviour
+    public class Bacterium : MonoBehaviour
     {
         public bool Logging = false;
         public Tilemap Tilemap;//set this in the inspector. References the tilemap from the world prefab.

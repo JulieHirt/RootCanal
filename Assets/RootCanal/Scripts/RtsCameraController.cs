@@ -1,3 +1,5 @@
+#nullable enable
+
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -27,14 +29,14 @@ namespace RootCanal
             Vector2 moveDelta = Vector2.zero;
             Vector2 mouseScreenPos = Input.mousePosition;
             if (Logging)
-                Debug.Log($"Mouse pos: {mouseScreenPos}, camera pixel dimensions: ({Camera.pixelWidth}, {Camera.pixelHeight})");
+                Debug.Log($"Mouse pos: {mouseScreenPos}, camera pixel dimensions: ({Camera!.pixelWidth}, {Camera.pixelHeight})");
             if (mouseScreenPos.x <= MinScreenOffsetToMoveX)
                 moveDelta += CameraSpeed * Vector2.left;
-            else if (mouseScreenPos.x > Camera.pixelWidth - MaxScreenOffsetToMoveX)
+            else if (mouseScreenPos.x > Camera!.pixelWidth - MaxScreenOffsetToMoveX)
                 moveDelta += CameraSpeed * Vector2.right;
             if (mouseScreenPos.y <= MinScreenOffsetToMoveY)
                 moveDelta += CameraSpeed * Vector2.down;
-            else if (mouseScreenPos.y > Camera.pixelHeight - MaxScreenOffsetToMoveY)
+            else if (mouseScreenPos.y > Camera!.pixelHeight - MaxScreenOffsetToMoveY)
                 moveDelta += CameraSpeed * Vector2.up;
 
             // Override mouse input with keyboard
@@ -47,7 +49,7 @@ namespace RootCanal
                 moveDelta.y = CameraSpeed * axisVert;
 
             // Keep camera within world bounds
-            Vector2 cameraBottomLeftWorldPos = Camera.ViewportToWorldPoint(new(0f, 0f));
+            Vector2 cameraBottomLeftWorldPos = Camera!.ViewportToWorldPoint(new(0f, 0f));
             Vector2 cameraCenterWorldPos = Camera.ViewportToWorldPoint(new(0.5f, 0.5f));
             float cameraWorldHalfWidth = cameraCenterWorldPos.x - cameraBottomLeftWorldPos.x;
             float cameraWorldHalfHeight = cameraCenterWorldPos.y - cameraBottomLeftWorldPos.y;

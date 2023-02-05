@@ -22,8 +22,8 @@ namespace RootCanal
         public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceDestroyed;
 
         private void Awake() =>
-            BacteriaManager!.BacteriumSpawned.AddListener(bacteria =>
-                bacteria.DestinationReached.AddListener(onDestinationReached)
+            BacteriaManager!.BacteriumAdded.AddListener(bacterium =>
+                bacterium.DestinationReached.AddListener(onDestinationReached)
             );
 
         private void onDestinationReached(Vector3Int position)

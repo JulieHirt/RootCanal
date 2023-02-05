@@ -18,7 +18,7 @@ namespace RootCanal
 
         private void Awake()
         {
-            BacteriaManager!.BacteriumSpawned.AddListener(bacterium => {
+            BacteriaManager!.BacteriumAdded.AddListener(bacterium => {
                 Timer miningTimer = bacterium.GetComponent<Timer>();
                 miningTimer.Triggered.AddListener(() => mine(bacterium));
             });
@@ -36,7 +36,7 @@ namespace RootCanal
                 MoneyContext!.AddToAmount(money);
             });
 
-        private void mine(Bacteria bacterium)
+        private void mine(Bacterium bacterium)
         {
             TileInstance? tile = TileInstanceManager!.GetTileAtPosition(bacterium.goalTilePos);
             if (tile == null) {
