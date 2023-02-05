@@ -24,6 +24,13 @@ namespace RootCanal
         {
             var step = speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, _target, step);
+            //if it reached the goal
+            if(transform.position. y < _target.y)
+            {
+                Debug.Log("mouthwash reached the end. destroying it.");
+                Destroy(this);
+
+            }
         }
         void OnTriggerEnter2D(Collider2D col)
         {
