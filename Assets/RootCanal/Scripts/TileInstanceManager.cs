@@ -17,7 +17,7 @@ namespace RootCanal
         public Transform? TileParent;
         [AssetsOnly] public GameObject? TileInstancePrefab;
 
-        public event EventHandler<(TileInstance, Vector3Int)> TileInstanceCreated;
+        public event EventHandler<(TileInstance, Vector3Int)>? TileInstanceCreated;
 
         private void Awake()
         {
