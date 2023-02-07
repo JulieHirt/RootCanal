@@ -14,6 +14,7 @@ namespace RootCanal
         public UnityEvent<Vector3Int> TileSelected = new();
         public Sprite PickAxeIcon;
         public Sprite NonPickAxeIcon;
+        public Sprite Transparent;
 
         // Update is called once per frame
         private void Update()
@@ -27,7 +28,8 @@ namespace RootCanal
 
             transform.position = Tilemap!.GetCellCenterWorld(mouseCell);
 
-            if (Tilemap.HasTile(mouseCell)) {
+            if (Tilemap.HasTile(mouseCell) && Tilemap.GetSprite(mouseCell)!= Transparent)
+            { 
                 if (Logging)
                     Debug.Log("There is a tile here!");
 

@@ -7645,6 +7645,10 @@ PrefabInstance:
       propertyPath: Tilemap
       value: 
       objectReference: {fileID: 7061033550011858939}
+    - target: {fileID: 7321629998541570297, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
+      propertyPath: Transparent
+      value: 
+      objectReference: {fileID: 21300000, guid: d213ab44c9aec99488bfa0a8e69650cb, type: 3}
     - target: {fileID: 7321629998541570298, guid: f371aed54d0074b40aaa4337a99cab5b, type: 3}
       propertyPath: m_RootOrder
       value: 5
